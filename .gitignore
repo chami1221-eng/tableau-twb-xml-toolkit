@@ -1,0 +1,35 @@
+# Credentials
+.env.tableau
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# Tableau
+*.twbx
+*.hyper
+*.tde
+
+# Work artifacts
+output/
+verify/
+*.png
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# 作業用の出力（preprocess.py / build_twbx.py の既定出力先）
+out/
+verify/

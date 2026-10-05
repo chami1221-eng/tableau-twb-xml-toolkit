@@ -1,0 +1,61 @@
+# featured_authors.yaml — Dynamic検索用の Author リスト
+#
+# Tableau Public Workbook API (`/public/apis/workbooks?profileName={name}`) で
+# 各Authorの全Viz一覧を取得 → title+keywords マッチで補完候補を生成する基盤データ。
+# 認証不要の public domain。--dynamic 指定時のみ使用（要ネット接続）。
+#
+# 気になるジャンルのAuthorを見つけたら profile_name を1行追記するだけで Dynamic 候補が増える。
+
+- profile_name: mitsuyoshi.kumagae
+  display_name: "Mitsuyoshi Kumagae"
+  affiliation: "(public sector)"
+  specialty: [open_data, demographics, disaster, infrastructure, education, health, governance]
+  notes: "公開データを内製ダッシュボード化して定期公開している作者。地図・時系列・集計の実例が豊富"
+
+- profile_name: rsugimura
+  display_name: "rsugimura"
+  affiliation: "(independent)"
+  specialty: [tableau_storytelling, ebpm, customer_story]
+  notes: "ストーリーテリング／カスタマーストーリー系の見せ方"
+
+- profile_name: yoshihito.kimura
+  display_name: "yoshihito.kimura"
+  affiliation: "(private)"
+  specialty: [industry, governance, hr, factory, daily_report]
+  notes: "製造現場・日報・勤怠など業務量/オペレーション系Vizの実例"
+
+- profile_name: tetsu.yamanaka
+  display_name: "Tetsu Yamanaka"
+  affiliation: "(independent)"
+  specialty: [text_mining, survey_analysis, voc]
+  notes: "テキストマイニング・アンケート/VoC分析の見せ方"
+
+- profile_name: ".36538250"
+  display_name: "Demographics / migration author"
+  affiliation: "(individual)"
+  specialty: [demographics, migration]
+  notes: "転出入・人口動態分析。地域×属性×時系列の集計例"
+
+- profile_name: ".4721156007"
+  display_name: "Facility map author"
+  affiliation: "(individual)"
+  specialty: [health, welfare, medical_facilities]
+  notes: "施設・拠点の地図＋一覧マップ。ロケーション系の実例"
+
+- profile_name: transportforvictoria
+  display_name: "Transport for Victoria"
+  affiliation: "(public agency, overseas)"
+  specialty: [transport, maas, public_transport, infrastructure]
+  notes: "海外公共交通機関の公式Author。MaaS・運行頻度系の定番"
+
+- profile_name: abdulrahman.khayyal
+  display_name: "Abdulrahman Khayyal"
+  affiliation: "(independent)"
+  specialty: [transport, od_analysis, taxi, maas]
+  notes: "NYC Taxi OD分析。需要・移動フロー分析の定番"
+
+- profile_name: ".42194771"
+  display_name: "Air quality author"
+  affiliation: "(individual)"
+  specialty: [environment, pm25, air_quality, decarbonization]
+  notes: "PM2.5・大気/環境系の成分分析。環境・脱炭素テーマの補完（中身は要確認）"

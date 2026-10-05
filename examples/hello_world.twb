@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- Minimal valid TWB demonstrating ManifestByVersion format -->
+<workbook original-version='18.1' source-build='2025.2.5 (20252.25.1107.1156)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <ManifestByVersion />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Sample Data' inline='true' name='federated.ds_sample' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='sample' name='textscan.conn'>
+            <connection class='textscan' directory='data' filename='sample.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.conn' name='sample' table='[sample#csv]' type='table'>
+          <columns grid-origin='A1' header='yes' separator=','>
+            <column datatype='string' name='city' ordinal='0' />
+            <column datatype='integer' name='population' ordinal='1' />
+            <column datatype='real' name='area_km2' ordinal='2' />
+            <column datatype='integer' name='density' ordinal='3' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>city</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[city]</local-name>
+            <parent-name>[sample#csv]</parent-name>
+            <remote-alias>city</remote-alias>
+            <local-type>string</local-type>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>population</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[population]</local-name>
+            <parent-name>[sample#csv]</parent-name>
+            <remote-alias>population</remote-alias>
+            <local-type>integer</local-type>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>area_km2</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[area_km2]</local-name>
+            <parent-name>[sample#csv]</parent-name>
+            <remote-alias>area_km2</remote-alias>
+            <local-type>real</local-type>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>density</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[density]</local-name>
+            <parent-name>[sample#csv]</parent-name>
+            <remote-alias>density</remote-alias>
+            <local-type>integer</local-type>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column caption='City' datatype='string' name='[city]' role='dimension' type='nominal' />
+      <column caption='Population' datatype='integer' name='[population]' role='measure' type='quantitative' />
+      <column caption='Area (km2)' datatype='real' name='[area_km2]' role='measure' type='quantitative' />
+      <column caption='Density' datatype='integer' name='[density]' role='measure' type='quantitative' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Population by City'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sample Data' name='federated.ds_sample' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_sample'>
+            <column caption='City' datatype='string' name='[city]' role='dimension' type='nominal' />
+            <column caption='Population' datatype='integer' name='[population]' role='measure' type='quantitative' />
+            <column-instance column='[city]' derivation='None' name='[none:city:nk]' pivot='key' type='nominal' />
+            <column-instance column='[population]' derivation='Sum' name='[sum:population:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.ds_sample].[none:city:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.ds_sample].[sum:population:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.ds_sample].[sum:population:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.ds_sample].[sum:population:qk]</rows>
+        <cols>[federated.ds_sample].[none:city:nk]</cols>
+      </table>
+      <simple-id uuid='{00000002-0000-0000-0000-000000000001}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Population by City'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{00000001-0000-0000-0000-000000000001}' />
+    </window>
+  </windows>
+</workbook>

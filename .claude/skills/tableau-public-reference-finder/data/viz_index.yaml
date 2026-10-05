@@ -1,0 +1,97 @@
+# viz_index.yaml — tableau-public-reference-finder の Static Index（設計の参考になる実在Viz）
+# theme key 語彙: references/tag_taxonomy.md（controlled vocabulary・17語）
+#
+# ここは「オフラインでも返せる小さな Seed」です。--dynamic を付けると featured_authors の
+# 公式 Workbook API から未収録候補も補完します。気に入った Viz はこの yaml に追記して育てられます。
+# 各エントリの pitch は「どういう設計・見せ方の参考になるか」を1行で記述。URLは実在確認済みのみ。
+
+- id: yamaguchi_migration_2024
+  url: https://public.tableau.com/app/profile/.36538250/viz/shared/56MYM3DMB
+  title: "転出入人口分析ダッシュボード"
+  author: ".36538250"
+  thumbnail: ""
+  tags: [転出入, 移住, 人口減少, オープンデータ, demographics]
+  themes: [demographics, migration]
+  use_case: "地域の転出入動態を地区別・属性別・時系列で可視化する"
+  pitch: "地域×属性×時系列の3軸クロス集計と増減の見せ方の設計例。人口・異動系データの参考"
+  stage_fit: [first_call, discovery]
+  language: ja
+  added: 2026-06-06
+
+- id: facility_map_list
+  url: https://public.tableau.com/app/profile/.4721156007/viz/_16921657175260/1
+  title: "施設一覧マップ"
+  author: ".4721156007"
+  thumbnail: ""
+  tags: [施設一覧, 地図連動, オープンデータ, health]
+  themes: [health, welfare]
+  use_case: "施設・拠点を地図＋一覧テーブルで連動表示する"
+  pitch: "ロケーション系データの定番レイアウト（地図×テーブルの連動）の参考"
+  stage_fit: [first_call, demo_warmup]
+  language: ja
+  added: 2026-06-06
+
+- id: open_data_reservoir_dashboard
+  url: https://public.tableau.com/app/profile/mitsuyoshi.kumagae/viz/9_17760806103310
+  title: "貯水状況ダッシュボード（オープンデータ内製）"
+  author: "mitsuyoshi.kumagae"
+  thumbnail: ""
+  tags: [オープンデータ, 内製, 地図, 時系列, infrastructure]
+  themes: [infrastructure, disaster]
+  use_case: "公開データを自動取込→地図＋時系列で定期公開する"
+  pitch: "オープンデータ自動取込→毎時更新→公開、という内製ダッシュボードのアーキ完成形の参考"
+  stage_fit: [first_call, discovery, executive]
+  language: ja
+  added: 2026-06-06
+
+- id: melbourne_public_transport
+  url: https://public.tableau.com/app/profile/transportforvictoria/viz/MelbournePublicTransportFrequency/Dashboard1
+  title: "Melbourne Public Transport Frequency"
+  author: "Transport for Victoria"
+  thumbnail: ""
+  tags: [公共交通, 頻度, MaaS, 海外事例, transport]
+  themes: [transport]
+  use_case: "路線×時間帯別の運行頻度をヒートマップで可視化する"
+  pitch: "頻度・稼働のヒートマップの見せ方の海外定番。交通・稼働率系の設計参考"
+  stage_fit: [first_call, demo_warmup]
+  language: en
+  added: 2026-06-06
+
+- id: factory_daily_report
+  url: https://public.tableau.com/app/profile/yoshihito.kimura/viz/paperfactory2/1_1
+  title: "[Factory Viz] 製造日報"
+  author: "yoshihito.kimura"
+  thumbnail: ""
+  tags: [日報, KPI管理, 業務量, industry]
+  themes: [industry, governance]
+  use_case: "日次KPIをシフト・ライン・品種別に集約する"
+  pitch: "「日報→ダッシュボード化」のテンプレ。件数・処理時間・工数などの日次集計の設計参考"
+  stage_fit: [discovery, demo_warmup]
+  language: ja
+  added: 2026-06-06
+
+- id: attendance_management
+  url: https://public.tableau.com/app/profile/yoshihito.kimura/viz/Viz_16313807003720/sheet0
+  title: "勤怠管理ダッシュボード"
+  author: "yoshihito.kimura"
+  thumbnail: ""
+  tags: [勤怠管理, 人事, 業務改善, governance]
+  themes: [governance]
+  use_case: "勤怠データを部署別・個人別・時系列で多軸可視化する"
+  pitch: "残業時間・有給取得率などの見える化レイアウトの参考。人事・労務系の設計参考"
+  stage_fit: [discovery, demo_warmup]
+  language: ja
+  added: 2026-06-06
+
+- id: nyc_taxi_od_maas
+  url: https://public.tableau.com/app/profile/abdulrahman.khayyal/viz/NewYorkTaxi_17298189050710/TaxiTrips
+  title: "NYC Taxi Trips (MaaS)"
+  author: "Abdulrahman Khayyal"
+  thumbnail: ""
+  tags: [タクシー, MaaS, OD分析, 交通需要, transport]
+  themes: [transport]
+  use_case: "OD（出発-到着）需要を地図＋時間帯で可視化する"
+  pitch: "OD分析（起点-終点フロー）の見せ方テンプレ。需要・移動系データの設計参考"
+  stage_fit: [first_call, demo_warmup]
+  language: en
+  added: 2026-06-06

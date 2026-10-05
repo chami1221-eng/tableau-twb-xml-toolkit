@@ -1,0 +1,9 @@
+# tableau-twb-xml-toolkit — 必要 Python パッケージ
+# インストール:  pip install -r requirements.txt
+tableauserverclient>=0.25
+lxml>=4.9          # TWB の XSD 検証・構造 diff の読み取り専用パースに使用 (編集はテキスト置換のみ)
+Pillow>=9.0       # twb-visual-iterator の画像差分比較に使用
+requests>=2.28    # Pulse REST / 一部 API 直叩き
+PyYAML>=6.0       # tableau-public-reference-finder の参照Viz Index 読み込みに使用
+janome>=0.5     # freetext-to-tableau の形態素解析（辞書込み・純Python）
+openpyxl>=3.1   # freetext-to-tableau で Excel の入力を読む

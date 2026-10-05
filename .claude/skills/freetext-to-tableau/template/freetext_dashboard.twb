@@ -1,0 +1,1309 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<workbook original-version='18.1' source-build='2025.2.5 (20252.25.1107.1156)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <ManifestByVersion />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='自由記述（テキスト分析）' inline='true' name='federated.ds_d2' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='d2_union' name='textscan.nc_d2'>
+            <connection class='textscan' directory='Data' filename='freetext_union.csv' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.nc_d2' name='freetext_union.csv' table='[freetext_union#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype="string" name="表" ordinal="0" />
+            <column datatype="string" name="データの種類" ordinal="1" />
+            <column datatype="string" name="分野" ordinal="2" />
+            <column datatype="string" name="年月" ordinal="3" />
+            <column datatype="string" name="テーマ" ordinal="4" />
+            <column datatype="string" name="キーワード" ordinal="5" />
+            <column datatype="string" name="原文" ordinal="6" />
+            <column datatype="integer" name="順序" ordinal="7" />
+            <column datatype="string" name="感情" ordinal="8" />
+            <column datatype="string" name="意見ID" ordinal="9" />
+            <column datatype="string" name="日時" ordinal="10" />
+            <column datatype="string" name="地域" ordinal="11" />
+            <column datatype="string" name="品詞" ordinal="12" />
+            <column datatype="integer" name="件数" ordinal="13" />
+            <column datatype="integer" name="ネガティブ件数" ordinal="14" />
+            <column datatype="integer" name="出現件数" ordinal="15" />
+            <column datatype="string" name="エッジID" ordinal="16" />
+            <column datatype="real" name="座標X" ordinal="17" />
+            <column datatype="real" name="座標Y" ordinal="18" />
+            <column datatype="real" name="座標Y2" ordinal="19" />
+            <column datatype="integer" name="共起回数" ordinal="20" />
+            <column datatype="string" name="ラベル語" ordinal="21" />
+            <column datatype="integer" name="語の出現件数" ordinal="22" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ja&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;￥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ja_JP&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>表</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[表]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>表</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>データの種類</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[データの種類]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>データの種類</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>分野</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[分野]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>分野</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>年月</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[年月]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>年月</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>テーマ</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[テーマ]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>テーマ</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>キーワード</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[キーワード]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>キーワード</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>原文</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[原文]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>原文</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>順序</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[順序]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>順序</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>感情</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[感情]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>感情</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>意見ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[意見ID]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>意見ID</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>日時</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[日時]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>日時</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>地域</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[地域]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>地域</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>品詞</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[品詞]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>品詞</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>件数</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[件数]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>件数</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ネガティブ件数</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ネガティブ件数]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>ネガティブ件数</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>出現件数</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[出現件数]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>出現件数</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>エッジID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[エッジID]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>エッジID</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>座標X</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[座標X]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>座標X</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>座標Y</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[座標Y]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>座標Y</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>座標Y2</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[座標Y2]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>座標Y2</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>共起回数</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[共起回数]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>共起回数</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ラベル語</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ラベル語]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>ラベル語</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>語の出現件数</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[語の出現件数]</local-name>
+            <parent-name>[freetext_union.csv]</parent-name>
+            <remote-alias>語の出現件数</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+      <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+      <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+      <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+      <column caption='テーマ' datatype='string' name='[テーマ]' role='dimension' type='nominal' />
+      <column caption='キーワード' datatype='string' name='[キーワード]' role='dimension' type='nominal' />
+      <column caption='原文' datatype='string' name='[原文]' role='dimension' type='nominal' />
+      <column caption='順序' datatype='integer' name='[順序]' role='dimension' type='ordinal' />
+      <column caption='感情' datatype='string' name='[感情]' role='dimension' type='nominal' />
+      <column caption='意見ID' datatype='string' name='[意見ID]' role='dimension' type='nominal' />
+      <column caption='日時' datatype='string' name='[日時]' role='dimension' type='nominal' />
+      <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+      <column caption='品詞' datatype='string' name='[品詞]' role='dimension' type='nominal' />
+      <column caption='件数' datatype='integer' name='[件数]' role='measure' type='quantitative' />
+      <column caption='ネガティブ件数' datatype='integer' name='[ネガティブ件数]' role='measure' type='quantitative' />
+      <column caption='出現件数' datatype='integer' name='[出現件数]' role='measure' type='quantitative' />
+      <column caption='エッジID' datatype='string' name='[エッジID]' role='dimension' type='nominal' />
+      <column caption='座標X' datatype='real' name='[座標X]' role='measure' type='quantitative' />
+      <column caption='座標Y' datatype='real' name='[座標Y]' role='measure' type='quantitative' />
+      <column caption='座標Y2' datatype='real' name='[座標Y2]' role='measure' type='quantitative' />
+      <column caption='共起回数' datatype='integer' name='[共起回数]' role='measure' type='quantitative' />
+      <column caption='ラベル語' datatype='string' name='[ラベル語]' role='dimension' type='nominal' />
+      <column caption='語の出現件数' datatype='integer' name='[語の出現件数]' role='measure' type='quantitative' />
+      <column caption='ネガティブ率' datatype='real' default-format='n#,##0.0' name='[ネガティブ率]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([ネガティブ件数]) / SUM([件数]) * 100' />
+      </column>
+      <column-instance column='[感情]' derivation='None' name='[none:感情:nk]' pivot='key' type='nominal' />
+      <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:感情:nk]' type='palette'>
+            <map to='#4c8fbd'><bucket>&quot;ポジティブ&quot;</bucket></map>
+            <map to='#b8c4cc'><bucket>&quot;ニュートラル&quot;</bucket></map>
+            <map to='#c0703a'><bucket>&quot;ネガティブ&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:分野:nk]' type='palette'>
+            <map to='#2c5f7c'><bucket>&quot;子育て・教育&quot;</bucket></map>
+            <map to='#5a9a6e'><bucket>&quot;まちづくり・環境&quot;</bucket></map>
+            <map to='#8a6fb0'><bucket>&quot;暮らし・安全&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+      <object-graph>
+        <objects>
+          <object caption='freetext_union.csv' id='d2_union_8B31C7A5D94E42F0B6E2A18C7D3F5061'>
+            <properties context=''>
+        <relation connection='textscan.nc_d2' name='freetext_union.csv' table='[freetext_union#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype="string" name="表" ordinal="0" />
+            <column datatype="string" name="データの種類" ordinal="1" />
+            <column datatype="string" name="分野" ordinal="2" />
+            <column datatype="string" name="年月" ordinal="3" />
+            <column datatype="string" name="テーマ" ordinal="4" />
+            <column datatype="string" name="キーワード" ordinal="5" />
+            <column datatype="string" name="原文" ordinal="6" />
+            <column datatype="integer" name="順序" ordinal="7" />
+            <column datatype="string" name="感情" ordinal="8" />
+            <column datatype="string" name="意見ID" ordinal="9" />
+            <column datatype="string" name="日時" ordinal="10" />
+            <column datatype="string" name="地域" ordinal="11" />
+            <column datatype="string" name="品詞" ordinal="12" />
+            <column datatype="integer" name="件数" ordinal="13" />
+            <column datatype="integer" name="ネガティブ件数" ordinal="14" />
+            <column datatype="integer" name="出現件数" ordinal="15" />
+            <column datatype="string" name="エッジID" ordinal="16" />
+            <column datatype="real" name="座標X" ordinal="17" />
+            <column datatype="real" name="座標Y" ordinal="18" />
+            <column datatype="real" name="座標Y2" ordinal="19" />
+            <column datatype="integer" name="共起回数" ordinal="20" />
+            <column datatype="string" name="ラベル語" ordinal="21" />
+            <column datatype="integer" name="語の出現件数" ordinal="22" />
+          </columns>
+        </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='棒をクリック → その語の原文を見る' name='[Action1_7A3E5C1D9B2F4A6E8C0D1E2F3A4B5C6D]'>
+      <activation type='on-select' />
+      <source dashboard='自由記述を、言葉から読む' type='sheet' worksheet='単語ランキング（件数）' />
+      <link caption='棒をクリック → その語の原文を見る' delimiter=',' escape='\' expression='tsl:%E8%87%AA%E7%94%B1%E8%A8%98%E8%BF%B0%E3%82%92%E3%80%81%E8%A8%80%E8%91%89%E3%81%8B%E3%82%89%E8%AA%AD%E3%82%80?%5Bfederated.ds_d2%5D.%5B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89%5D~s0=&lt;[federated.ds_d2].[キーワード]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）' />
+        <param name='target' value='自由記述を、言葉から読む' />
+      </command>
+    </action>
+    <action caption='語をクリック → その語の原文を見る' name='[Action4_2D6F8A0C1E3B5D7F9A1C3E5B7D9F0A24]'>
+      <activation type='on-select' />
+      <source dashboard='自由記述を、言葉から読む' type='sheet' worksheet='ワードクラウド（大きさ＝件数・色＝感情）' />
+      <link caption='語をクリック → その語の原文を見る' delimiter=',' escape='\' expression='tsl:%E8%87%AA%E7%94%B1%E8%A8%98%E8%BF%B0%E3%82%92%E3%80%81%E8%A8%80%E8%91%89%E3%81%8B%E3%82%89%E8%AA%AD%E3%82%80?%5Bfederated.ds_d2%5D.%5B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89%5D~s0=&lt;[federated.ds_d2].[キーワード]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）' />
+        <param name='target' value='自由記述を、言葉から読む' />
+      </command>
+    </action>
+    <action caption='丸をクリック → その語の原文を見る' name='[Action3_9C4F1E3B7D5A2068B4C6D8E0F2A46183]'>
+      <activation type='on-select' />
+      <source dashboard='自由記述を、言葉から読む' type='sheet' worksheet='リレーションマップ（丸＝件数・線＝同じ意見に出る語）' />
+      <link caption='丸をクリック → その語の原文を見る' delimiter=',' escape='\' expression='tsl:%E8%87%AA%E7%94%B1%E8%A8%98%E8%BF%B0%E3%82%92%E3%80%81%E8%A8%80%E8%91%89%E3%81%8B%E3%82%89%E8%AA%AD%E3%82%80?%5Bfederated.ds_d2%5D.%5B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89%5D~s0=&lt;[federated.ds_d2].[キーワード]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）' />
+        <param name='target' value='自由記述を、言葉から読む' />
+      </command>
+    </action>
+    <datasources>
+      <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+    </datasources>
+    <datasource-dependencies datasource='federated.ds_d2'>
+      <column datatype='string' name='[キーワード]' role='dimension' type='nominal' />
+    </datasource-dependencies>
+  </actions>
+  <worksheets>
+    <worksheet name='単語ランキング（件数）'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='キーワード' datatype='string' name='[キーワード]' role='dimension' type='nominal' />
+            <column-instance column='[キーワード]' derivation='None' name='[none:キーワード:nk]' pivot='key' type='nominal' />
+            <column caption='品詞' datatype='string' name='[品詞]' role='dimension' type='nominal' />
+            <column-instance column='[品詞]' derivation='None' name='[none:品詞:nk]' pivot='key' type='nominal' />
+            <column caption='感情' datatype='string' name='[感情]' role='dimension' type='nominal' />
+            <column-instance column='[感情]' derivation='None' name='[none:感情:nk]' pivot='key' type='nominal' />
+            <column caption='出現件数' datatype='integer' name='[出現件数]' role='measure' type='quantitative' />
+            <column-instance column='[出現件数]' derivation='Sum' name='[sum:出現件数:qk]' pivot='key' type='quantitative' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;ワードクラウド&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:品詞:nk]'>
+            <groupfilter function='member' level='[none:品詞:nk]' member='&quot;名詞&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:キーワード:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;公園&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;子育て&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;子ども&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;保育園&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;駅&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;相談&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;安心&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;対応&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;バス&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;区役所&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;復職&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;空き&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;育休&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;遊具&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;心配&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;窓口&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;ごみ&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;避難場所&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;地域&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;場所&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;預ける&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;減る&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;遊ぶ&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;逃げる&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;助かる&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;足りる&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;荒らす&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;高い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;多い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;良い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;分かりにくい&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;少ない&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;大きい&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;暗い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;取りにくい&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;長い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;怖い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;狭い&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;歩きやすい&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;住みやすい&quot;' />
+              <groupfilter function='member' level='[none:キーワード:nk]' member='&quot;古い&quot;' />
+            </groupfilter>
+          </filter>
+          <computed-sort column='[federated.ds_d2].[none:キーワード:nk]' direction='DESC' using='[federated.ds_d2].[sum:出現件数:qk]' />
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+            <column>[federated.ds_d2].[none:品詞:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height' field='[federated.ds_d2].[none:キーワード:nk]' value='66' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.ds_d2].[none:感情:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.ds_d2].[sum:出現件数:qk]</rows>
+        <cols>[federated.ds_d2].[none:キーワード:nk]</cols>
+      </table>
+      <simple-id uuid='{3EBEA0F6-048B-4D77-BCC0-A7B744072A32}' />
+    </worksheet>
+    <worksheet name='ワードクラウド（大きさ＝件数・色＝感情）'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='キーワード' datatype='string' name='[キーワード]' role='dimension' type='nominal' />
+            <column-instance column='[キーワード]' derivation='None' name='[none:キーワード:nk]' pivot='key' type='nominal' />
+            <column caption='品詞' datatype='string' name='[品詞]' role='dimension' type='nominal' />
+            <column-instance column='[品詞]' derivation='None' name='[none:品詞:nk]' pivot='key' type='nominal' />
+            <column caption='感情' datatype='string' name='[感情]' role='dimension' type='nominal' />
+            <column-instance column='[感情]' derivation='None' name='[none:感情:nk]' pivot='key' type='nominal' />
+            <column caption='出現件数' datatype='integer' name='[出現件数]' role='measure' type='quantitative' />
+            <column-instance column='[出現件数]' derivation='Sum' name='[sum:出現件数:qk]' pivot='key' type='quantitative' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;ワードクラウド&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:品詞:nk]'>
+            <groupfilter function='member' level='[none:品詞:nk]' member='&quot;名詞&quot;' />
+          </filter>
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+            <column>[federated.ds_d2].[none:品詞:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.ds_d2].[none:キーワード:nk]' />
+              <size column='[federated.ds_d2].[sum:出現件数:qk]' />
+              <color column='[federated.ds_d2].[none:感情:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{066544C8-3756-45FF-A88C-48789993CDAC}' />
+    </worksheet>
+    <worksheet name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='エッジID' datatype='string' name='[エッジID]' role='dimension' type='nominal' />
+            <column-instance column='[エッジID]' derivation='None' name='[none:エッジID:nk]' pivot='key' type='nominal' />
+            <column caption='キーワード' datatype='string' name='[キーワード]' role='dimension' type='nominal' />
+            <column-instance column='[キーワード]' derivation='None' name='[none:キーワード:nk]' pivot='key' type='nominal' />
+            <column caption='ラベル語' datatype='string' name='[ラベル語]' role='dimension' type='nominal' />
+            <column-instance column='[ラベル語]' derivation='Min' name='[min:ラベル語:nk]' pivot='key' type='nominal' />
+            <column caption='順序' datatype='integer' name='[順序]' role='dimension' type='ordinal' />
+            <column-instance column='[順序]' derivation='None' name='[none:順序:ok]' pivot='key' type='ordinal' />
+            <column caption='座標X' datatype='real' name='[座標X]' role='measure' type='quantitative' />
+            <column-instance column='[座標X]' derivation='Avg' name='[avg:座標X:qk]' pivot='key' type='quantitative' />
+            <column caption='座標Y' datatype='real' name='[座標Y]' role='measure' type='quantitative' />
+            <column-instance column='[座標Y]' derivation='Avg' name='[avg:座標Y:qk]' pivot='key' type='quantitative' />
+            <column caption='座標Y2' datatype='real' name='[座標Y2]' role='measure' type='quantitative' />
+            <column-instance column='[座標Y2]' derivation='Avg' name='[avg:座標Y2:qk]' pivot='key' type='quantitative' />
+            <column caption='語の出現件数' datatype='integer' name='[語の出現件数]' role='measure' type='quantitative' />
+            <column-instance column='[語の出現件数]' derivation='Sum' name='[sum:語の出現件数:qk]' pivot='key' type='quantitative' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;共起ネットワーク&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <!-- 座標は見せない。軸ヘッダを消すのは attr='display' value='false'
+                 （Tier A 131件。tick-visibility は自作の造語だったので使わない） -->
+            <format attr='display' class='0' field='[federated.ds_d2].[avg:座標X:qk]' scope='cols' value='false' />
+            <format attr='display' class='1' field='[federated.ds_d2].[avg:座標X:qk]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.ds_d2].[avg:座標Y:qk]' scope='rows' value='false' />
+            <format attr='display' class='1' field='[federated.ds_d2].[avg:座標Y:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.ds_d2].[avg:座標Y2:qk]' scope='rows' value='false' />
+            <format attr='display' class='1' field='[federated.ds_d2].[avg:座標Y2:qk]' scope='rows' value='false' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='mark'>
+            <!-- 丸の大きさの範囲。max/min（データ範囲）は書かない＝フィルターで件数が
+                 減ったとき固定値だと全部小さくなるので、現在の表示範囲に自動追従させる -->
+            <encoding attr='size' field='[federated.ds_d2].[sum:語の出現件数:qk]' field-type='quantitative'
+                      max-size='1' min-size='0.10' type='quantsize' />
+          </style-rule>
+          <style-rule element='axis'>
+            <!-- ★二重軸（線レイヤ＋丸レイヤを重ねる）。fold='true' が本体
+                 → feedback_twb_dual_axis_xml.md
+              ★★2軸のレンジを **両方とも固定** しないと、丸が線より下にずれて別の絵になる
+                （260916 実測）。座標は生成時に 0〜100 へ正規化済みで、フィルターしても
+                値域が変わらないので固定してよい（共起回数のような集計値とはここが違う）。 -->
+            <encoding attr='space' class='0' field='[federated.ds_d2].[avg:座標Y:qk]' field-type='quantitative' max='104' min='-4' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.ds_d2].[avg:座標Y2:qk]' field-type='quantitative' fold='true' max='104' min='-4' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.ds_d2].[avg:座標X:qk]' field-type='quantitative' max='104' min='-4' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <!-- ① 線レイヤ。細く一定。関係があることだけを示す -->
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.ds_d2].[avg:座標Y:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.ds_d2].[none:分野:nk]' />
+              <lod column='[federated.ds_d2].[none:エッジID:nk]' />
+              <path column='[federated.ds_d2].[none:順序:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.32' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <!-- ② 丸レイヤ。大きさ＝その語が出てきた件数。ラベルは1ノード1箇所 -->
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.ds_d2].[avg:座標Y2:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.ds_d2].[sum:語の出現件数:qk]' />
+              <color column='[federated.ds_d2].[none:分野:nk]' />
+              <!-- ★260916 修正: lod は エッジID ではなく キーワード。
+                   エッジID だと **1マーク＝1エッジ（両端の2語）** になり、「ノードを押した」
+                   ことにならない＝押した語が一意に決まらない。座標はキーワードごとに一意
+                   （実データで検査済み・0件の重複）なので、キーワードでまとめて1語1丸になる。
+                   path（順序）も丸には不要なので外す（線レイヤにだけ残す）。 -->
+              <lod column='[federated.ds_d2].[none:キーワード:nk]' />
+              <text column='[federated.ds_d2].[min:ラベル語:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.9' />
+                <format attr='mark-labels-show' value='true' />
+                <!-- ★cull='true' にすると、丸が集中するハブの語が重なり判定で丸ごと消える。
+                     ラベルは既にデータ側で1ノード1回に絞ってあるので、ここは消さない -->
+                <format attr='mark-labels-cull' value='false' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.ds_d2].[avg:座標Y:qk] + [federated.ds_d2].[avg:座標Y2:qk])</rows>
+        <cols>[federated.ds_d2].[avg:座標X:qk]</cols>
+      </table>
+      <simple-id uuid='{46B4C6D1-6107-4DF6-9511-2AC4C07C6B71}' />
+    </worksheet>
+    <worksheet name='意見の原文（語をクリックすると絞り込み・デモ用に400件を抽出）'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='テーマ' datatype='string' name='[テーマ]' role='dimension' type='nominal' />
+            <column-instance column='[テーマ]' derivation='None' name='[none:テーマ:nk]' pivot='key' type='nominal' />
+            <column caption='キーワード' datatype='string' name='[キーワード]' role='dimension' type='nominal' />
+            <column-instance column='[キーワード]' derivation='None' name='[none:キーワード:nk]' pivot='key' type='nominal' />
+            <column caption='原文' datatype='string' name='[原文]' role='dimension' type='nominal' />
+            <column-instance column='[原文]' derivation='None' name='[none:原文:nk]' pivot='key' type='nominal' />
+            <column caption='意見ID' datatype='string' name='[意見ID]' role='dimension' type='nominal' />
+            <column-instance column='[意見ID]' derivation='None' name='[none:意見ID:nk]' pivot='key' type='nominal' />
+            <column caption='日時' datatype='string' name='[日時]' role='dimension' type='nominal' />
+            <column-instance column='[日時]' derivation='None' name='[none:日時:nk]' pivot='key' type='nominal' />
+            <column caption='感情' datatype='string' name='[感情]' role='dimension' type='nominal' />
+            <column-instance column='[感情]' derivation='None' name='[none:感情:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;会話ログ&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:キーワード:nk]'>
+            <groupfilter function='level-members' level='[none:キーワード:nk]' />
+          </filter>
+
+          <computed-sort column='[federated.ds_d2].[none:日時:nk]' direction='DESC' using='[federated.ds_d2].[none:日時:nk]' />
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+            <column>[federated.ds_d2].[none:キーワード:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.ds_d2].[none:日時:nk]' value='100' />
+            <format attr='width' field='[federated.ds_d2].[none:データの種類:nk]' value='112' />
+            <format attr='width' field='[federated.ds_d2].[none:地域:nk]' value='44' />
+            <format attr='width' field='[federated.ds_d2].[none:テーマ:nk]' value='96' />
+            <format attr='width' field='[federated.ds_d2].[none:原文:nk]' value='700' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.ds_d2].[none:感情:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.ds_d2].[none:日時:nk] / [federated.ds_d2].[none:データの種類:nk] / [federated.ds_d2].[none:地域:nk] / [federated.ds_d2].[none:テーマ:nk] / [federated.ds_d2].[none:原文:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{3B606E27-8978-49FB-88B8-65BB26B25194}' />
+    </worksheet>
+    <worksheet name='地域 × テーマ　ネガティブな意見の割合（％）'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='テーマ' datatype='string' name='[テーマ]' role='dimension' type='nominal' />
+            <column-instance column='[テーマ]' derivation='None' name='[none:テーマ:nk]' pivot='key' type='nominal' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+            <column caption='件数' datatype='integer' name='[件数]' role='measure' type='quantitative' />
+            <column-instance column='[件数]' derivation='Sum' name='[sum:件数:qk]' pivot='key' type='quantitative' />
+            <column caption='ネガティブ件数' datatype='integer' name='[ネガティブ件数]' role='measure' type='quantitative' />
+            <column-instance column='[ネガティブ件数]' derivation='Sum' name='[sum:ネガティブ件数:qk]' pivot='key' type='quantitative' />
+            <column caption='ネガティブ率' datatype='real' default-format='n#,##0.0' name='[ネガティブ率]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([ネガティブ件数]) / SUM([件数]) * 100' />
+            </column>
+            <column-instance column='[ネガティブ率]' derivation='User' name='[usr:ネガティブ率:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;会話集計&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.ds_d2].[none:テーマ:nk]' value='110' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.ds_d2].[usr:ネガティブ率:qk]' />
+              <text column='[federated.ds_d2].[usr:ネガティブ率:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.ds_d2].[none:分野:nk] / [federated.ds_d2].[none:テーマ:nk]</rows>
+        <cols>[federated.ds_d2].[none:地域:nk]</cols>
+      </table>
+      <simple-id uuid='{2F51750A-6A19-4996-8FD3-7CE5DBFB3E94}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='自由記述を、言葉から読む'>
+      <style />
+      <size maxheight='1200' maxwidth='1600' minheight='1200' minwidth='1600' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone forceUpdate='true' h='9667' id='20' type-v2='text' w='47500' x='625' y='500'>
+            <formatted-text>
+              <run bold='true' fontcolor='#2c5f7c' fontsize='15'>自由記述を、言葉から読む&#10;</run>
+              <run fontcolor='#777777' fontsize='9'>語をクリックすると、下の原文がその語を含む意見だけになります。上の絞り込みは全部のグラフに効きます。</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='3' />
+            </zone-style>
+          </zone>
+          <zone h='10000' id='35' name='ワードクラウド（大きさ＝件数・色＝感情）' pane-specification-id='0' param='[federated.ds_d2].[none:感情:nk]' type-v2='color' w='12500' x='49375' y='333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='10000' id='36' name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）' pane-specification-id='0' param='[federated.ds_d2].[none:分野:nk]' type-v2='color' w='15625' x='62500' y='333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='7500' id='37' name='地域 × テーマ　ネガティブな意見の割合（％）' pane-specification-id='0' param='[federated.ds_d2].[usr:ネガティブ率:qk]' type-v2='color' w='20750' x='78750' y='333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='5333' id='30' mode='checkdropdown' name='単語ランキング（件数）' pane-specification-id='0' param='[federated.ds_d2].[none:品詞:nk]' type-v2='filter' w='19375' x='500' y='10667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='5333' id='31' mode='checkdropdown' name='単語ランキング（件数）' pane-specification-id='0' param='[federated.ds_d2].[none:データの種類:nk]' type-v2='filter' w='19375' x='20375' y='10667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='5333' id='32' mode='checkdropdown' name='単語ランキング（件数）' pane-specification-id='0' param='[federated.ds_d2].[none:分野:nk]' type-v2='filter' w='19375' x='40250' y='10667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='5333' id='33' mode='checkdropdown' name='単語ランキング（件数）' pane-specification-id='0' param='[federated.ds_d2].[none:地域:nk]' type-v2='filter' w='19375' x='60125' y='10667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='5333' id='34' mode='checkdropdown' name='単語ランキング（件数）' pane-specification-id='0' param='[federated.ds_d2].[none:年月:nk]' type-v2='filter' w='19375' x='80000' y='10667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='15833' id='21' name='単語ランキング（件数）' show-title='true' w='40000' x='500' y='16667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='16000' id='22' name='ワードクラウド（大きさ＝件数・色＝感情）' show-title='true' w='40000' x='500' y='32667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='32000' id='23' name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）' show-title='true' w='58500' x='41000' y='16667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='26667' id='25' name='地域 × テーマ　ネガティブな意見の割合（％）' show-title='true' w='99000' x='500' y='49000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='21667' id='24' name='意見の原文（語をクリックすると絞り込み・デモ用に400件を抽出）' show-title='true' w='99000' x='500' y='76000'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone forceUpdate='true' h='2000' id='40' type-v2='text' w='99000' x='500' y='97833'>
+            <formatted-text>
+              <run fontcolor='#999999' fontsize='8'>※ 形態素解析・感情判定・共起の集計は前処理（preprocess.py）の結果です。Tableau の機能ではありません。</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='3' />
+            </zone-style>
+          </zone>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='8' />
+            </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{0FCD9246-A068-469C-9826-C060CCB07913}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.5' source-height='44'>
+    <window class='worksheet' name='単語ランキング（件数）'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{17DE730F-CA88-475B-9561-BB721824BF73}' />
+    </window>
+    <window class='worksheet' name='ワードクラウド（大きさ＝件数・色＝感情）'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1503E9AB-459D-42B9-9555-778101D0748F}' />
+    </window>
+    <window class='worksheet' name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{EB38F9A8-70A1-4385-A26C-C19B0829E73E}' />
+    </window>
+    <window class='worksheet' name='意見の原文（語をクリックすると絞り込み・デモ用に400件を抽出）'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6830FD29-3F26-4ACD-812B-312833473BFC}' />
+    </window>
+    <window class='worksheet' name='地域 × テーマ　ネガティブな意見の割合（％）'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6647335B-FB85-4B21-ACB5-3D225AFABBED}' />
+    </window>
+    <window class='dashboard' maximized='true' name='自由記述を、言葉から読む'>
+      <viewpoints>
+        <viewpoint name='単語ランキング（件数）'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='ワードクラウド（大きさ＝件数・色＝感情）'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='意見の原文（語をクリックすると絞り込み・デモ用に400件を抽出）'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='地域 × テーマ　ネガティブな意見の割合（％）'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='21' />
+      <simple-id uuid='{0FCD9246-A068-469C-9826-C060CCB07913}' />
+    </window>
+  </windows>
+</workbook>
