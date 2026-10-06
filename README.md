@@ -79,6 +79,14 @@ cp .env.tableau.template .env.tableau
 python tools/tableau_rest.py list-workbooks
 ```
 
+## Claude Cowork で使う（git もコマンドも不要）
+
+1. このページの「Code」→「Download ZIP」でダウンロードして展開
+2. Cowork で展開したフォルダを作業フォルダに選ぶ
+3. 「`はじめに.md` を読んで進めてください」と頼む
+
+準備（部品のインストール）→ サンプルでの動作確認 → 手元のデータの分析、の順に Claude が進めます。手順の中身は [はじめに.md](はじめに.md) にあります。
+
 ## Claude Code で使う（推奨）
 
 ```bash
