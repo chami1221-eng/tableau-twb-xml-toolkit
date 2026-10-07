@@ -40,6 +40,10 @@ def _children(body):
 
 def check_text(t):
     errs = []
+    # ★261007 実機 D2E8DA72「書式設定の変更を認識できません: ManifestByVersion」。Cloud は通すが Desktop は止まる
+    if re.search(r"<ManifestByVersion\s*/>", t):
+        errs.append(('manifest', 'document-format-change-manifest',
+                     "空の <ManifestByVersion /> が残っている（twb-desktop-compat-converter で17要素に置き換える）"))
     for m in re.finditer(r"<action [^>]*name='([^']+)'[^>]*>(.*?)</action>", t, re.S):
         tags = _children(m.group(2))
         if tags.count('source') > 1:

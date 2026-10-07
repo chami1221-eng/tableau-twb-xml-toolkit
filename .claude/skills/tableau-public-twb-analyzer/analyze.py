@@ -8,9 +8,10 @@ Tableau Public Viz URLからTWBXをダウンロードし、TWBのXML構造を自
 import argparse
 import os
 import re
-import subprocess
+import shutil
 import sys
 import tempfile
+import urllib.request
 import zipfile
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -34,14 +35,17 @@ def download_twbx(repo_url: str, tmp_dir: str) -> str:
     out_path = os.path.join(tmp_dir, f"{repo_url}.twbx")
     download_url = f"https://public.tableau.com/workbooks/{repo_url}.twb"
     print(f"  Downloading: {download_url}")
-    result = subprocess.run(
-        ["curl", "-sL", "-o", out_path, download_url],
-        capture_output=True, text=True, shell=True
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"ダウンロード失敗: {result.stderr}")
+    # ★261007 curl＋shell=True（引数リスト）は Linux で引数が落ちる＝Cowork のクラウド環境で動かなかった。urllib に置換
+    req = urllib.request.Request(download_url, headers={"User-Agent": "Mozilla/5.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp, open(out_path, "wb") as f:
+            f.write(resp.read())
+    except Exception as e:
+        raise RuntimeError(f"ダウンロード失敗: {e}")
     if not os.path.exists(out_path) or os.path.getsize(out_path) == 0:
         raise RuntimeError(f"ダウンロードファイルが空です: {out_path}")
+    if not zipfile.is_zipfile(out_path):
+        raise RuntimeError("TWBX ではない応答が返った。作者がダウンロードを許可していない Viz の可能性が高い（別の Viz を探す）")
     return out_path
 
 
@@ -913,7 +917,7 @@ def generate_report(viz_url: str, repo_url: str, file_size: int, root: ET.Elemen
 # メイン
 # ---------------------------------------------------------------------------
 
-def process_url(viz_url: str, output_dir: str):
+def process_url(viz_url: str, output_dir: str, keep_twbx: bool = False):
     """1つのURLを処理する。"""
     repo_url = extract_repo_url(viz_url)
     print(f"\n[{repo_url}] 処理開始...")
@@ -922,6 +926,11 @@ def process_url(viz_url: str, output_dir: str):
         # ダウンロード
         twbx_path = download_twbx(repo_url, tmp_dir)
         print(f"  Downloaded: {twbx_path} ({os.path.getsize(twbx_path)} bytes)")
+        if keep_twbx:   # 手本の XML を直接読みたいとき（はじめに.md 4-1 の A）
+            os.makedirs(output_dir, exist_ok=True)
+            kept = os.path.join(output_dir, f"{repo_url}.twbx")
+            shutil.copy(twbx_path, kept)
+            print(f"  Kept TWBX: {kept}")
 
         # 展開
         twb_path, file_size = extract_twb(twbx_path, tmp_dir)
@@ -950,13 +959,16 @@ def main():
     parser.add_argument("urls", nargs="+", help="Tableau Public Viz URL(s)")
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR,
                         help=f"Output directory (default: {DEFAULT_OUTPUT_DIR})")
+    parser.add_argument("--keep-twbx", action="store_true",
+                        help="DL した TWBX を output-dir に残す（XML を手本として直接読むとき）")
     args = parser.parse_args()
+    sys.stdout.reconfigure(encoding="utf-8")
 
     results = []
     errors = []
     for url in args.urls:
         try:
-            out_path = process_url(url, args.output_dir)
+            out_path = process_url(url, args.output_dir, args.keep_twbx)
             results.append(out_path)
         except Exception as e:
             print(f"  ERROR: {e}", file=sys.stderr)

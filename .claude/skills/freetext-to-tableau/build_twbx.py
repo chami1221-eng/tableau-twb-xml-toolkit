@@ -21,6 +21,8 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, 'template', 'freetext_dashboard.twb')
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'twb-public-export'))
+import export  # noqa: E402  Desktop 互換の処理を twb-public-export と共有する
 DS = 'federated.ds_d2'
 RANK_WS = '単語ランキング（件数）'
 TITLE = '自由記述を、言葉から読む'
@@ -28,6 +30,30 @@ PALETTE = ['#2c5f7c', '#5a9a6e', '#8a6fb0', '#c9a227', '#4c8fbd', '#b55d5d', '#7
 EXPECT = ['表', 'データの種類', '分野', '年月', 'テーマ', 'キーワード', '原文', '順序', '感情', '意見ID',
           '日時', '地域', '品詞', '件数', 'ネガティブ件数', '出現件数', 'エッジID', '座標X', '座標Y', '座標Y2',
           '共起回数', 'ラベル語', '語の出現件数']
+
+
+# 表示確認済みの量（★261007 同梱サンプル3,000件を Desktop 2026.1 で開いて崩れなし）。
+# ダッシュボードは 1600×1200 固定なので、これを超えると凡例・見出しの欠けやスクロールが出うる＝利用者に目視を頼む
+VERIFIED = {  # 列: (表示確認済みの値の数, 最長文字数)
+    '地域': (18, 2), 'テーマ': (10, 7), '分野': (3, 8), '感情': (4, 6), 'データの種類': (2, 8), '年月': (6, 7),
+}
+VERIFIED_WORD_LEN = 10   # ランキング・ワードクラウドの語の最長
+
+
+def layout_warnings(rows, words):
+    """データ量がサンプル（表示確認済み）を超えた箇所を返す。超えても止めない。"""
+    warns = []
+    for col, (n_ok, len_ok) in VERIFIED.items():
+        vals = {r[col] for r in rows if r[col]}
+        if len(vals) > n_ok:
+            warns.append(f'{col}が {len(vals)} 種類（確認済みは {n_ok} まで）')
+        long = [v for v in vals if len(v) > len_ok]
+        if long:
+            warns.append(f'{col}に {len_ok} 文字を超える値: {", ".join(sorted(long, key=len)[-3:])}')
+    long = [w for w in words if len(w) > VERIFIED_WORD_LEN]
+    if long:
+        warns.append(f'ランキングの語に {VERIFIED_WORD_LEN} 文字を超えるもの: {", ".join(long[:3])}')
+    return warns
 
 
 def esc(s):
@@ -81,6 +107,16 @@ def main():
     if a.title:
         twb = twb.replace(TITLE, esc(a.title))
 
+    # 3. Desktop / Public Desktop 2026.1 で開ける形に（★261007 Cowork 試走で D2E8DA72＝空の ManifestByVersion で止まった）
+    #    twb-public-export と同じ処理（接続パス・並べ替えの位置・互換変換・内容モデル検査）をここで通す
+    twb = export.relativize_paths(twb)
+    twb, _n_sort = export.fix_sort_order(twb)
+    twb, _counts = export.load_converter().apply_21_items(twb, with_buttons=('<button ' in twb))
+    errs = export.check_text(twb)
+    if errs:
+        raise SystemExit('★Desktop で開けない形が残っている（D2E8DA72 になる）\n' +
+                         '\n'.join(f'  [{k}] {n}: {m}' for k, n, m in errs))
+
     out = os.path.abspath(a.output)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
@@ -89,6 +125,14 @@ def main():
     print(f'出力: {out}（{os.path.getsize(out):,} bytes）')
     print(f'  ランキングの語 {len(words)} 個（品詞ごと上位{a.top}）／分野 {len(groups)} 個: {", ".join(groups)}')
     print('  開く: Tableau Desktop / Public Desktop。Cloud へは python tools/publish.py（twbx をそのまま渡す）')
+    print('  検査: Desktop で開けない形なし（内容モデル検査 OK）')
+    warns = layout_warnings(rows, words)
+    if warns:
+        print('  ★表示が崩れる可能性（サンプルで確認済みの量を超えた）。Desktop で開いて該当箇所を見てもらう:')
+        for w in warns:
+            print(f'    - {w}')
+    else:
+        print('  検査: データ量はサンプル（表示確認済み）の範囲内')
 
 
 if __name__ == '__main__':

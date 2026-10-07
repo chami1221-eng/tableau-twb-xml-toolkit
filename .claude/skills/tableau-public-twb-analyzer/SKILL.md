@@ -22,8 +22,14 @@ python .claude/skills/tableau-public-twb-analyzer/analyze.py "https://public.tab
 python .claude/skills/tableau-public-twb-analyzer/analyze.py "URL1" "URL2" "URL3"
 ```
 
+TWBX そのものを残す（手本の XML を直接読む）:
+```bash
+python .claude/skills/tableau-public-twb-analyzer/analyze.py "URL" --output-dir out/public --keep-twbx
+```
+- 作者がダウンロードを許可していない Viz は「TWBX ではない応答」で止まる。別の Viz を探す
+
 ## 出力
-`out/research/YYYYMMDD_{repoUrl}_twb_analysis.md` にMarkdownレポートを生成
+`--output-dir`（既定 `output`）に `YYYYMMDD_{repoUrl}_twb_analysis.md` を生成。`--keep-twbx` なら `{repoUrl}.twbx` も残す
 
 ## 解析内容
 1. ダッシュボード一覧とゾーンツリー
