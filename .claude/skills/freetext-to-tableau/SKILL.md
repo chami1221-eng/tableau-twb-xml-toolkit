@@ -78,6 +78,7 @@ python .claude/skills/freetext-to-tableau/build_twbx.py out/freetext_union.csv -
 ```
 - Tableau Desktop / Tableau Public Desktop で開ける（build_twbx.py が Desktop 互換変換と内容モデル検査まで通す）
 - **作ったら利用者に Desktop で開いてもらい、表示を確かめてもらう**。エラーが出たらエラーコードとメッセージ全文を貼ってもらい、3回やりとりしても直らなければ Tableau Public の手本探しか、利用者の最小操作による XML 取得に切り替える（手順は `はじめに.md` の 4-1）
+- 利用者が Tableau Cloud（トライアル可）と PAT を用意できるなら、publish → view-image で Claude が表示を確かめられる。提案は1回だけ・限界も伝える（`はじめに.md` の 4-2）
 - Cloud へ: `python tools/publish.py out/自由記述分析.twbx --project "プロジェクト名" --name "WB名"`（`--name` 必須。既存WBの上書き事故防止）
 - publish 後の確認: `python tools/tableau_rest.py view-image --workbook "WB名" --out ./verify`
   - 🚨 **静止画は実画面と違う**（フィルターの「(すべて)」行や行の高さは描かれない）。最後は Cloud の画面で見る
