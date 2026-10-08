@@ -50,7 +50,9 @@ Tableau MCP サーバは強力ですが、導入にはコストがあります�
 | ✅ できる | Tableau Cloud への publish（.twb→.twbx変換込み・PAT認証） |
 | ✅ できる | 既存Cloud WBのDL → XMLテキスト編集 → re-publish |
 | ✅ できる | 全ビューのPNG取得による描画検証（publish成功≠描画成功） |
-| ✅ できる | Tableau Public Viz の TWBX解析・XMLパターン学習 |
+| ✅ できる | Tableau Public Viz の TWBX解析・XMLパターン学習（twbx のダウンロード込み） |
+| ✅ できる | 同梱の手本（Tableau 自身が保存した実物）から TWB の XML／Prep のフロー（.tfl）の正しい書き方を抜き出す |
+| ✅ できる | Prep のフローを Prep Builder を開かずに実行して検証（Prep Builder がある PC のみ） |
 | ❌ できない | Tableau Desktop の代替（最終の細部調整はDesktop/Web Editが速い） |
 | ❌ できない | データ接続の追加認証が必要なライブ接続系（本kitはCSV/抽出前提） |
 
@@ -81,11 +83,12 @@ python tools/tableau_rest.py list-workbooks
 
 ## Claude Cowork で使う（git もコマンドも不要）
 
-1. このページの「Code」→「Download ZIP」でダウンロードして展開
-2. Cowork で展開したフォルダを作業フォルダに選ぶ
-3. 「`はじめに.md` を読んで進めてください」と頼む
+1. このページの「Code」→「Download ZIP」でダウンロードする（展開は不要）
+2. Cowork の新しいタスクに ZIP を添付する
+3. 「添付のZIPを展開して、中の `はじめに.md` を読んで進めてください」と頼む
 
-準備（部品のインストール）→ サンプルでの動作確認 → 手元のデータの分析、の順に Claude が進めます。手順の中身は [はじめに.md](はじめに.md) にあります。
+準備（部品のインストール）→ サンプルでの動作確認 → 手元のデータの分析、の順に Claude が進めます。できた .twbx はチャットからダウンロードして Tableau Desktop で開きます。
+デスクトップアプリで作業フォルダを選べる場合は、展開したフォルダを選んで「`はじめに.md` を読んで進めてください」でも始められます。手順の中身は [はじめに.md](はじめに.md) にあります。
 
 ## Claude Code で使う（推奨）
 
@@ -143,7 +146,17 @@ python tools/publish.py out/自由記述分析.twbx --project "Your Project" --n
 単語ランキング／ワードクラウド／リレーションマップ（語をクリックすると下の原文一覧が絞られる）／地域×テーマのネガティブ率／原文一覧を1画面に置いています。
 感情は既定では簡易辞書で付けます。文脈で意味が変わる語（「保育料が**高い**」と「安全性が**高い**」）は辞書では決まらないので、精度が要るときは Claude Code に1件ずつ判定させる手順を SKILL.md に書いています。
 
-## エージェント用スキル（11本）
+### 入口D: Tableau Prep のフローを作る・直す
+
+`.claude/skills/tfl-syntax-miner/SKILL.md` 参照。Prep Builder が保存した手本（`examples/corpus/tfl/`）から書き方を抜き出し、新しいノードは手本を複製して1つずつ足します。知見は `shared/memory/reference_prep_tfl_knowhow.md`。
+
+```bash
+python .claude/skills/tfl-syntax-miner/mine.py --node-types           # 手本にあるノード型
+python .claude/skills/tfl-syntax-miner/mine.py --recipe list          # よく使う書き方
+python .claude/skills/tfl-syntax-miner/verify.py out/my_flow.tfl      # 実行して出力の行数・列名まで確かめる（Prep Builder がある PC）
+```
+
+## エージェント用スキル（13本）
 
 Claude Code ならそのまま skills として認識されます。他のエージェント（Cursor / GitHub Copilot 等）では、該当する SKILL.md を参照ドキュメントとしてコンテキストに読み込ませてください。
 
@@ -160,6 +173,8 @@ Claude Code ならそのまま skills として認識されます。他のエー
 | `tableau-public-reference-finder` | テーマから参考Vizを Tableau Public で探索 |
 | `twb-desktop-compat-converter` | Cloud由来TWBをDesktop 2026.1互換に変換（21項目+α） |
 | `twb-public-export` | 生成TWBを Desktop / Tableau Public（2026.1）で開ける twbx に（伏せ字・互換変換・内容モデル検査・抽出手順） |
+| `twb-xml-syntax-miner` | Tableau が保存した手本から、XML 要素・属性の正しい書き方を抜き出す（読み取り専用） |
+| `tfl-syntax-miner` | Prep Builder が保存した手本から .tfl の書き方を抜き出す＋tableau-prep-cli で実行検証 |
 
 ## リポジトリ構成
 
@@ -173,10 +188,11 @@ tableau-twb-xml-toolkit/
 │   ├── publish.py           # .twb→.twbx変換 + Cloud publish（PAT認証）
 │   ├── publish_test.py      # XML/XSD検証 + publishテスト + bisectデバッグ
 │   └── tableau_rest.py      # 脱MCP参照ヘルパー（list-workbooks/list-views/view-image）
-├── .claude/skills/          # エージェント用スキル11本（上表）。Claude Code が自動で読み込む
+├── .claude/skills/          # エージェント用スキル13本（上表）。Claude Code が自動で読み込む
 ├── CLAUDE.md                # Claude Code が毎回読むルール（入口・接続・事故の実績があるルール）
-├── shared/memory/           # 実戦ナレッジ34本（エラーコード集・XML互換性・Desktop互換・クリック連動等）
+├── shared/memory/           # 実戦ナレッジ35本（エラーコード集・XML互換性・Desktop互換・クリック連動・Prep等）
 ├── examples/                # 最小構成の動作するTWBサンプル／freetext/ = 自由記述の架空サンプル
+│   └── corpus/              # 書き方の手本（twb/ = Tableau Desktop が保存した実物、tfl/ = Prep Builder が保存した実物）
 ├── .env.tableau.template    # 認証情報テンプレート
 └── requirements.txt
 ```
@@ -204,6 +220,15 @@ publish が 401002 / 400011 / 403132 / 500000 で失敗する場合は、まず
 | 400011 | XML parse失敗（cross-table calc注入・不正LOD等） |
 | 403132 | CSV配置不整合（directory rewrite失敗） |
 | 500000 | 「Forbidden」表示だが実体はXML構造エラー（window cards欠落・filter zone過剰属性等） |
+
+## v2.2.0 の変更点
+
+- **`twb-xml-syntax-miner` / `tfl-syntax-miner` を追加** — 書き方の手本（`examples/corpus/`）から、Tableau・Prep Builder が実際に書いている表現を抜き出す。Prep のフローは tableau-prep-cli で実行検証まで
+- **Prep の知見を追加**（`shared/memory/reference_prep_tfl_knowhow.md`）
+- `freetext-to-tableau` が Desktop で開ける twbx を直接出すように（Desktop 互換変換と内容モデル検査を内蔵・データ量の警告）
+- `model_check.py` が空の `ManifestByVersion` を検出するように
+- `tableau-public-twb-analyzer` が Linux（Claude Cowork のクラウド環境）でも twbx を落とせるように。`--keep-twbx` で手本として残せる
+- `はじめに.md`: Claude Cowork の Web 版（ZIP 添付）に対応。Desktop での確認は最後の1回だけ／エラー時の進め方／Tableau Cloud での自動確認の提案
 
 ## v2.1.0 の変更点
 

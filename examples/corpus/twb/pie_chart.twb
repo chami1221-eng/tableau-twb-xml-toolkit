@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- build 20252.25.1107.1156                               -->
+<workbook original-version="18.1" source-build="2025.2.5 (20252.25.1107.1156)" source-platform="win" version="18.1" xmlns:user="http://www.tableausoftware.com/xml/user">
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name="ui.encoding.shelf.height" value="24" />
+    <preference name="ui.shelf.height" value="26" />
+  </preferences>
+  <datasources>
+    <datasource caption='予算データ（サンプル）' inline='true' name='federated.ds_budget' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='budget' name='textscan.nc_budget'>
+            <connection class='textscan' directory='Data' filename='budget.csv' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.nc_budget' name='budget.csv' table='[budget#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype="string" name="年度" ordinal="0" />
+            <column datatype="string" name="区分1" ordinal="1" />
+            <column datatype="string" name="区分2" ordinal="2" />
+            <column datatype="string" name="区分3" ordinal="3" />
+            <column datatype="string" name="区分4" ordinal="4" />
+            <column datatype="string" name="区分5" ordinal="5" />
+            <column datatype="string" name="区分6" ordinal="6" />
+            <column datatype="string" name="区分7" ordinal="7" />
+            <column datatype="integer" name="金額" ordinal="8" />
+            <column datatype="string" name="引用元" ordinal="9" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ja&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;￥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ja_JP&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>年度</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[年度]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>年度</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分1]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分1</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分2]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分2</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分3]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分3</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分4</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分4]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分4</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分5</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分5]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分5</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分6</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分6]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分6</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>区分7</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[区分7]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>区分7</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>金額</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[金額]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>金額</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>引用元</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[引用元]</local-name>
+            <parent-name>[budget.csv]</parent-name>
+            <remote-alias>引用元</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[budget_A1B2C3D4E5F6789012345678ABCDEF01]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='年度' datatype='string' name='[年度]' role='dimension' type='nominal' />
+      <column caption='区分1' datatype='string' name='[区分1]' role='dimension' type='nominal' />
+      <column caption='区分2' datatype='string' name='[区分2]' role='dimension' type='nominal' />
+      <column caption='区分3' datatype='string' name='[区分3]' role='dimension' type='nominal' />
+      <column caption='区分4' datatype='string' name='[区分4]' role='dimension' type='nominal' />
+      <column caption='区分5' datatype='string' name='[区分5]' role='dimension' type='nominal' />
+      <column caption='区分6' datatype='string' name='[区分6]' role='dimension' type='nominal' />
+      <column caption='区分7' datatype='string' name='[区分7]' role='dimension' type='nominal' />
+      <column caption='金額' datatype='integer' name='[金額]' role='measure' type='quantitative' />
+      <column caption='引用元' datatype='string' name='[引用元]' role='dimension' type='nominal' />
+      <column caption='金額（億円）' datatype='real' name='[calc_okuyen]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([金額]) / 100000000' />
+      </column>
+      <column caption='歳入合計' datatype='real' name='[calc_sainyuu_total]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF [区分1] = &quot;歳入予算&quot; AND [区分4] != &quot;&quot; THEN [金額] END) / 100000000' />
+      </column>
+      <column caption='歳出合計' datatype='real' name='[calc_saisyutsu_total]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF [区分1] = &quot;歳出款別（目的別）予算&quot; THEN [金額] END) / 100000000' />
+      </column>
+      <column caption='&quot; &quot;' datatype='string' name='[calc_spacer]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='&quot; &quot;' />
+      </column>
+      <column caption='MIN(0.0)' datatype='real' name='[calc_min0]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='MIN(0.0)' />
+      </column>
+      <column caption='MIN(1.0)' datatype='real' name='[calc_min1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='MIN(1.0)' />
+      </column>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <object-graph>
+        <objects>
+          <object caption='budget.csv' id='budget_A1B2C3D4E5F6789012345678ABCDEF01'>
+            <properties context=''>
+        <relation connection='textscan.nc_budget' name='budget.csv' table='[budget#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype="string" name="年度" ordinal="0" />
+            <column datatype="string" name="区分1" ordinal="1" />
+            <column datatype="string" name="区分2" ordinal="2" />
+            <column datatype="string" name="区分3" ordinal="3" />
+            <column datatype="string" name="区分4" ordinal="4" />
+            <column datatype="string" name="区分5" ordinal="5" />
+            <column datatype="string" name="区分6" ordinal="6" />
+            <column datatype="string" name="区分7" ordinal="7" />
+            <column datatype="integer" name="金額" ordinal="8" />
+            <column datatype="string" name="引用元" ordinal="9" />
+          </columns>
+        </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name="Tableau" />
+  </mapsources>
+  <worksheets>
+    <worksheet name='円グラフ_歳入構成'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='予算データ（サンプル）' name='federated.ds_budget' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_budget'>
+            <column caption='年度' datatype='string' name='[年度]' role='dimension' type='nominal' />
+            <column caption='区分1' datatype='string' name='[区分1]' role='dimension' type='nominal' />
+            <column caption='区分4' datatype='string' name='[区分4]' role='dimension' type='nominal' />
+            <column caption='金額' datatype='integer' name='[金額]' role='measure' type='quantitative' />
+            <column-instance column='[年度]' derivation='None' name='[none:年度:nk]' pivot='key' type='nominal' />
+            <column-instance column='[区分1]' derivation='None' name='[none:区分1:nk]' pivot='key' type='nominal' />
+            <column-instance column='[区分4]' derivation='None' name='[none:区分4:nk]' pivot='key' type='nominal' />
+            <column-instance column='[金額]' derivation='Sum' name='[sum:金額:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_budget].[none:年度:nk]'>
+            <groupfilter function='member' level='[none:年度:nk]' member='&quot;令和７年度&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='filter-simple' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_budget].[none:区分1:nk]'>
+            <groupfilter function='member' level='[none:区分1:nk]' member='&quot;歳入予算&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='filter-simple' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_budget].[none:区分4:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='filter-simple'>
+              <groupfilter function='level-members' level='[none:区分4:nk]' />
+              <groupfilter function='member' level='[none:区分4:nk]' member='&quot;&quot;' />
+            </groupfilter>
+          </filter>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.ds_budget].[none:区分4:nk]' />
+              <wedge-size column='[federated.ds_budget].[sum:金額:qk]' />
+              <text column='[federated.ds_budget].[none:区分4:nk]' />
+              <text column='[federated.ds_budget].[sum:金額:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{8E92194D-586E-4134-96A3-B3CEBB612CBB}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor="1.5" source-height="44">
+    <window class="worksheet" maximized="true" name="円グラフ_歳入構成">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="30">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid="{3A107A5B-4132-49C8-BA3C-355774ED53BE}" />
+    </window>
+  </windows>
+</workbook>

@@ -33,3 +33,6 @@ desktop.ini
 # 作業用の出力（preprocess.py / build_twbx.py の既定出力先）
 out/
 verify/
+
+# 書き方の手本は追跡する
+!examples/corpus/**/*.twbx

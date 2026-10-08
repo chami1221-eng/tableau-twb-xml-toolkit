@@ -15,6 +15,12 @@ Tableau のワークブック（.twb / .twbx）を、**MCP サーバを使わず
 | publish 後に描画を確認する | `verify-twb-publish-render` |
 | Desktop / Tableau Public で開ける twbx にする | `twb-public-export` |
 | 2つの TWB の構造差分を取る | `twb-xml-structure-diff` |
+| TWB の XML 要素・属性の正しい書き方を手本から取る | `twb-xml-syntax-miner` |
+| Tableau Public の Viz を探す・twbx を落として構造を読む | `tableau-public-reference-finder` / `tableau-public-twb-analyzer` |
+| **Tableau Prep のフロー（.tfl）を作る・直す・検証する** | `tfl-syntax-miner`（知見 = `shared/memory/reference_prep_tfl_knowhow.md`） |
+
+**書き方の手本は `examples/corpus/`**（`twb/` = Tableau Desktop が保存した実物、`tfl/` = Prep Builder が保存した実物）。
+手本に無い書き方が要るときは、Tableau Public から落として足すか、利用者に該当部分だけ作って保存・添付してもらう。
 
 ## Tableau Cloud への接続（MCP 不要）
 
@@ -28,7 +34,7 @@ Tableau のワークブック（.twb / .twbx）を、**MCP サーバを使わず
 2. **publish は必ず `--name` を付ける。** 省略すると既存の別のワークブックを上書きする
 3. **publish が通っても描画が正しいとは限らない。** `tools/tableau_rest.py view-image` で全ビューを1件ずつ見る（並列にしない）。
    **静止画は実画面と違う**（フィルターの「(すべて)」行・行の高さが描かれない）ので、最後は Cloud の画面で確認する
-4. **知らない XML 要素・属性を推測で書かない。** Tableau（Desktop か Web Edit）で同じものを1つ作って保存し、その XML を読んでから書く。
+4. **知らない XML 要素・属性を推測で書かない。** まず `twb-xml-syntax-miner` で手本を引く。無ければ Tableau（Desktop か Web Edit）で同じものを1つ作って保存し、その XML を読んでから書く（Prep の .tfl も同じ。`tfl-syntax-miner`）。
    自己流の属性は publish エラー（400011/500000）か、エラーも出ずに無視される
 5. **Desktop / Public で開くなら `twb-public-export` を通す。** Cloud で通る XML でも Desktop は止まることがある（`shared/memory/feedback_twb_desktop_2026_gates.md`）
 6. publish が 400/403/500 で落ちたら、PAT より先に **XML の構造を疑う**。`shared/memory/reference_twb_publish_error_codes.md` を最初に開く
