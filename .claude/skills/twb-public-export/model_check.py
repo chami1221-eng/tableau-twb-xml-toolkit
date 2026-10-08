@@ -78,4 +78,6 @@ if __name__ == '__main__':
     for kind, name, msg in errs:
         print(f"  NG [{kind}] {name}: {msg}")
     print('Desktop 内容モデル検査 OK' if not errs else f'NG {len(errs)} 件')
+    if errs:
+        print('→ 直し方は shared/memory/feedback_twb_desktop_2026_gates.md。利用者とのやりとりは はじめに.md の 4-1 に沿う')
     sys.exit(1 if errs else 0)

@@ -145,6 +145,7 @@ def main():
         cli = find_cli()
         if not cli:
             print('★ tableau-prep-cli.bat が見つからない（Prep Builder 未インストール?）')
+            print('  → 利用者に Prep Builder で開いて実行してもらう。手順は はじめに.md の 4-1 を読み直してから案内する')
             return 2
         ok = run_flow(cli, tfl)
 
@@ -163,6 +164,7 @@ def main():
         print('  - フロー実行が成功していない')
     for p in problems:
         print('  - ' + p)
+    print('  → 直す前に shared/memory/reference_prep_tfl_knowhow.md と はじめに.md の 4-1 を読み直す')
     return 1
 
 
