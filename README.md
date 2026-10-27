@@ -125,9 +125,20 @@ python tools/tableau_rest.py view-image --workbook "My Workbook" --out ./verify
 
 `.claude/skills/twb-cloud-dl-xml-inject/SKILL.md` 参照。REST APIでDL → XMLをテキスト置換で編集 → re-publish。Web Edit の手動操作（calc追加・format修正・zone調整等）をコードで再現できます。
 
+### 入口E: 表のデータ（件数・金額・人数）をダッシュボードにする
+
+`.claude/skills/table-to-tableau/SKILL.md` 参照。自由記述の列が無い CSV を1コマンドで Desktop で開ける twbx にします（項目別の棒・クロス表・明細・絞り込み付きダッシュボード）。表を何本渡しても縦に積まず、1表＝1データソースにします。
+
+```bash
+python .claude/skills/table-to-tableau/build_twbx.py examples/table/sample_facility_usage.csv \
+  -o out/表データ_サンプル.twbx --title "区別の施設利用（サンプル）"
+```
+
+> 表のデータを入口C（自由記述）の `freetext_union.csv` の形に詰め込まないでください。雛形の列は語の分析のための意味を持っていて、別の値を入れると意味の違う数が足し合わされます。
+
 ### 入口C: 自由記述（アンケート・市民の声）をテキスト分析する
 
-`.claude/skills/freetext-to-tableau/SKILL.md` 参照。形態素解析・感情・共起・関係図の座標は Tableau の機能ではないので、Python で先に済ませて雛形ダッシュボードに差し込みます。
+`.claude/skills/freetext-to-tableau/SKILL.md` 参照。**文章の列があり、その言葉を分析したいときだけ**使います。形態素解析・感情・共起・関係図の座標は Tableau の機能ではないので、Python で先に済ませて雛形ダッシュボードに差し込みます。
 
 ```bash
 pip install janome openpyxl
@@ -156,12 +167,13 @@ python .claude/skills/tfl-syntax-miner/mine.py --recipe list          # よく�
 python .claude/skills/tfl-syntax-miner/verify.py out/my_flow.tfl      # 実行して出力の行数・列名まで確かめる（Prep Builder がある PC）
 ```
 
-## エージェント用スキル（13本）
+## エージェント用スキル（14本）
 
 Claude Code ならそのまま skills として認識されます。他のエージェント（Cursor / GitHub Copilot 等）では、該当する SKILL.md を参照ドキュメントとしてコンテキストに読み込ませてください。
 
 | スキル | 役割 |
 |---|---|
+| `table-to-tableau` | 表のデータ（文章の列が無い CSV）→ Desktop で開ける twbx（棒・クロス表・明細・ダッシュボード）。1表＝1データソース |
 | `freetext-to-tableau` | 自由記述 → 形態素解析・感情・共起・関係図座標 → テキスト分析ダッシュボード |
 | `twb-generator` | CSV群から .twb をXML直接生成（本体） |
 | `twb-cloud-dl-xml-inject` | 既存Cloud WBのDL→XML編集→re-publish |
@@ -188,10 +200,10 @@ tableau-twb-xml-toolkit/
 │   ├── publish.py           # .twb→.twbx変換 + Cloud publish（PAT認証）
 │   ├── publish_test.py      # XML/XSD検証 + publishテスト + bisectデバッグ
 │   └── tableau_rest.py      # 脱MCP参照ヘルパー（list-workbooks/list-views/view-image）
-├── .claude/skills/          # エージェント用スキル13本（上表）。Claude Code が自動で読み込む
+├── .claude/skills/          # エージェント用スキル14本（上表）。Claude Code が自動で読み込む
 ├── CLAUDE.md                # Claude Code が毎回読むルール（入口・接続・事故の実績があるルール）
 ├── shared/memory/           # 実戦ナレッジ35本（エラーコード集・XML互換性・Desktop互換・クリック連動・Prep等）
-├── examples/                # 最小構成の動作するTWBサンプル／freetext/ = 自由記述の架空サンプル
+├── examples/                # 最小構成の動作するTWBサンプル／table/ = 表データの架空サンプル／freetext/ = 自由記述の架空サンプル
 │   └── corpus/              # 書き方の手本（twb/ = Tableau Desktop が保存した実物、tfl/ = Prep Builder が保存した実物）
 ├── .env.tableau.template    # 認証情報テンプレート
 └── requirements.txt
@@ -220,6 +232,14 @@ publish が 401002 / 400011 / 403132 / 500000 で失敗する場合は、まず
 | 400011 | XML parse失敗（cross-table calc注入・不正LOD等） |
 | 403132 | CSV配置不整合（directory rewrite失敗） |
 | 500000 | 「Forbidden」表示だが実体はXML構造エラー（window cards欠落・filter zone過剰属性等） |
+
+## v2.3.0 の変更点
+
+- **`table-to-tableau` を追加** — 表のデータ（自由記述の列が無い CSV）を1コマンドで Desktop で開ける twbx に。棒・クロス表・明細・全シートに効く絞り込み。表を何本渡しても縦に積まず、1表＝1データソース。`build_twbx.py` と同じ「検査」行を出す。架空サンプル `examples/table/sample_facility_usage.csv`
+- **`はじめに.md` の手順1を変更** — 既定で自由記述の分析に進めず、最初に「自由記述（文章）の列があり、その言葉を分析したいか」を確かめて道を分ける。サンプルも道ごとに用意
+- **表のデータを `freetext_union.csv` の形に詰め込まない**ことを `はじめに.md`・`CLAUDE.md`・`freetext-to-tableau` に明記（雛形の列の流用で、意味の違う値の足し合わせ・二重計上が実際に起きた）
+
+これまでの変更点は [CHANGELOG.md](CHANGELOG.md) にもまとめています。
 
 ## v2.2.0 の変更点
 

@@ -72,7 +72,9 @@ def main():
     with open(a.csv, encoding='utf-8-sig') as f:
         rd = csv.DictReader(f)
         if rd.fieldnames != EXPECT:
-            raise SystemExit(f'★列が雛形と合わない（preprocess.py の出力をそのまま渡す）\n  CSV: {rd.fieldnames}')
+            raise SystemExit(f'★列が雛形と合わない（preprocess.py の出力をそのまま渡す）\n  CSV: {rd.fieldnames}\n'
+                             '  表のデータ（自由記述の分析ではないもの）なら、列名を合わせて通さずに table-to-tableau を使う:\n'
+                             '  python .claude/skills/table-to-tableau/build_twbx.py <CSV> -o out/表データ.twbx')
         rows = list(rd)
     twb = open(TEMPLATE, encoding='utf-8').read()
 

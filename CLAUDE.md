@@ -20,8 +20,11 @@ Tableau のワークブック（.twb / .twbx）を、**MCP サーバを使わず
 
 | やりたいこと | スキル |
 |---|---|
+| **表のデータ（件数・金額・人数など。文章の列が無い CSV）をダッシュボードにする** | `table-to-tableau` |
 | **自由記述（アンケート・市民の声）を分析するダッシュボードを作る** | `freetext-to-tableau` |
-| CSV から新しいワークブックを作る | `twb-generator` |
+| CSV から形や見せ方を細かく指定してワークブックを作る | `twb-generator` |
+
+**どちらの道かは、データに自由記述（文章）の列があり、その言葉を分析したいかで決める**（[はじめに.md](はじめに.md) の手順1）。迷ったら表のデータ側。
 | Cloud 上の既存ワークブックを落として XML を直し、出し直す | `twb-cloud-dl-xml-inject` |
 | publish 後に描画を確認する | `verify-twb-publish-render` |
 | Desktop / Tableau Public で開ける twbx にする | `twb-public-export` |
@@ -49,6 +52,9 @@ Tableau のワークブック（.twb / .twbx）を、**MCP サーバを使わず
    自己流の属性は publish エラー（400011/500000）か、エラーも出ずに無視される
 5. **Desktop / Public で開くなら `twb-public-export` を通す。** Cloud で通る XML でも Desktop は止まることがある（`shared/memory/feedback_twb_desktop_2026_gates.md`）
 6. publish が 400/403/500 で落ちたら、PAT より先に **XML の構造を疑う**。`shared/memory/reference_twb_publish_error_codes.md` を最初に開く
+7. **自由記述ではないデータを `freetext_union.csv` の形へ詰め込まない。** 雛形の列（座標X・ネガティブ件数・語の出現件数 など）を別の意味に流用して表示名だけ変えない。複数の表を「表」の列で縦に積んで1本にしない。
+   意味の違う値が同じグラフで足し合わされる（区のランキングに区でないものが並ぶ、同じ人を二重に数える。2026-10 に実際に起きた）。
+   表のデータは `table-to-tableau` で作る（表ごとに別のデータソースになる）。`freetext-to-tableau/build_twbx.py` が列の不一致で止まったら、列名を合わせて通すのではなく道を選び直す
 
 ## ナレッジ
 
