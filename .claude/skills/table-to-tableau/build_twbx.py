@@ -230,7 +230,11 @@ def worksheet(name, key, caption, used, fdims, groups, sort, mark, encodings, ro
     labels = ("            <style>\n              <style-rule element='mark'>\n"
               "                <format attr='mark-labels-show' value='true' />\n"
               "                <format attr='mark-labels-cull' value='false' />\n"
-              "              </style-rule>\n            </style>\n") if pane_labels else ''
+              "              </style-rule>\n            </style>\n") if pane_labels is True else ''
+    if pane_labels == 'kpi':   # 大きな数字（Tier A: pane > style > style-rule[element=mark] > format font-size）
+        labels = ("            <style>\n              <style-rule element='mark'>\n"
+                  "                <format attr='font-size' value='20' />\n"
+                  "              </style-rule>\n            </style>\n")
     enc = ('            <encodings>\n' + '\n'.join('              ' + e for e in encodings) + '\n            </encodings>\n') if encodings else ''
     fx = filters_xml(key, fdims, groups)
     return f"""    <worksheet name='{esc(name)}'>
@@ -252,7 +256,7 @@ def worksheet(name, key, caption, used, fdims, groups, sort, mark, encodings, ro
             <mark class='{mark}' />
 {enc}{labels}          </pane>
         </panes>
-        <rows>{rows}</rows>
+        {f'<rows>{rows}</rows>' if rows else '<rows />'}
         {f'<cols>{cols_shelf}</cols>' if cols_shelf else '<cols />'}
       </table>
       <simple-id uuid='{{{uid("ws", name)}}}' />
@@ -318,12 +322,13 @@ def build_table(idx, path, title, a, groups_start):
         m = next((c for c in measures if c['name'] == a.measure), None)
         if not m:
             raise SystemExit(f'★--measure の列が {path} の数値の列に無い: {a.measure}（数値の列: {[c["name"] for c in measures]}）')
-    elif measures:
-        m = measures[0]
-    else:
-        m = {'name': COUNT_NAME, 'kind': 'integer', 'role': 'measure', 'calc': True, 'agg': 'sum'}
+    cnt = {'name': COUNT_NAME, 'kind': 'integer', 'role': 'measure', 'calc': True, 'agg': 'sum'}
+    if not a.measure:
+        m = measures[0] if measures else cnt
     m_ref = inst(m)[0]
-    m_label = f'{m["name"]}（平均）' if m['agg'] == 'avg' else (m['name'] if m.get('calc') else f'{m["name"]}（合計）')
+    label = lambda c: f'{c["name"]}（平均）' if c['agg'] == 'avg' else (c['name'] if c.get('calc') else f'{c["name"]}（合計）')  # noqa: E731
+    m_label = label(m)
+    sfx = '' if idx == 1 else f'（{caption}）'   # 表が2本以上のときシート名がぶつからないように
 
     # 棒にする項目（指定順 → 無ければ値の種類が少ない順）
     order = {n: i for i, n in enumerate(a.dims)}
@@ -336,11 +341,21 @@ def build_table(idx, path, title, a, groups_start):
     groups = {c['name']: groups_start + i for i, c in enumerate(fdims)}
 
     sheets, ws_names = [], []
+    # 要約＝大きな数字（最大4枚）。既定は 主に見る数値・行の数・平均で見る数値（率など）だけ。
+    # ほかの数値の合計は足して意味があるとは限らない（施設×月の開館日数の合計など）ので --kpis で明示したときだけ出す
+    extra = [c for c in measures if c is not m and (c['name'] in a.kpis or (not a.kpis and c['agg'] == 'avg'))]
+    kpis = [m] + ([cnt] if m is not cnt else []) + extra
+    kpi_names = []
+    for c in kpis[:4]:
+        name = f'{label(c)}{sfx}'
+        sheets.append(worksheet(name, key, caption, fdims + [c], fdims, groups, None, 'Text',
+                                [f"<text column='[federated.{key}].{inst(c)[0]}' />"], None, None, '', 'kpi'))
+        kpi_names.append(name)
     style_hdr = lambda c: (f"          <style-rule element='worksheet'>\n"  # noqa: E731
                            f"            <format attr='display-field-labels' scope='rows' value='false' />\n          </style-rule>\n")
     for c in bars:
         d_ref = inst(c)[0]
-        name = f'{c["name"]}別 {m_label}'
+        name = f'{c["name"]}別 {m_label}{sfx}'
         used = [c] + [f for f in fdims if f is not c] + [m]
         sheets.append(worksheet(
             name, key, caption, used, fdims, groups,
@@ -351,16 +366,20 @@ def build_table(idx, path, title, a, groups_start):
     cross = None
     if len(bars) >= 2:
         r_dim, c_dim = sorted(bars[:2], key=lambda c: -c['distinct'])
-        cross = f'{r_dim["name"]} × {c_dim["name"]}　{m_label}'
+        cross = f'{r_dim["name"]} × {c_dim["name"]}　{m_label}{sfx}'
         used = [r_dim, c_dim] + [f for f in fdims if f not in (r_dim, c_dim)] + [m]
         sheets.append(worksheet(
             cross, key, caption, used, fdims, groups, None, 'Square',
             [f"<color column='[federated.{key}].{m_ref}' />", f"<text column='[federated.{key}].{m_ref}' />"],
-            f'[federated.{key}].{inst(r_dim)[0]}', f'[federated.{key}].{inst(c_dim)[0]}', '', True))
+            f'[federated.{key}].{inst(r_dim)[0]}', f'[federated.{key}].{inst(c_dim)[0]}',
+            # 色は1色相の濃淡だけ（Tier A: style-rule[element=mark] > encoding palette='blue_10_0' type='interpolated'）
+            f"          <style-rule element='mark'>\n"
+            f"            <encoding attr='color' field='[federated.{key}].{m_ref}' palette='blue_10_0' type='interpolated' />\n"
+            f"          </style-rule>\n", True))
         ws_names.append(cross)
 
     detail_dims = dims[:6]
-    detail = f'明細（{m_label}）'
+    detail = f'明細（{m_label}）{sfx}'
     used = detail_dims + [f for f in fdims if f not in detail_dims] + [m]
     rows = ' / '.join(f'[federated.{key}].{inst(c)[0]}' for c in detail_dims) or f'[federated.{key}].{m_ref}'
     sheets.append(worksheet(
@@ -369,40 +388,49 @@ def build_table(idx, path, title, a, groups_start):
     ws_names.append(detail)
 
     # ダッシュボード（1600×1200 固定・layout-basic。手本と同じ寸法）
+    # 配置の原則（Tableau 公式研修）: 視線は左上→右（Z/F）。要約（大きな数字）→ 概要 → 詳細 の順に左上から右下へ
+    #   1段目 タイトル（左）＋絞り込み（右）／2段目 大きな数字／3段目 概要＝項目別の棒／4段目 詳細＝クロス表・明細
     dash = title if (title and idx == 1) else (f'{title}（{caption}）' if title else caption)
     z, zid = [], 100 * idx
-    z.append(f"""          <zone forceUpdate='true' h='6000' id='{zid}' type-v2='text' w='99000' x='500' y='500'>
+    title_w = 99000 if not fdims else 55000
+    z.append(f"""          <zone forceUpdate='true' h='10333' id='{zid}' type-v2='text' w='{title_w}' x='500' y='500'>
             <formatted-text>
-              <run bold='true' fontcolor='#2c5f7c' fontsize='15'>{esc(dash)}&#10;</run>
-              <run fontcolor='#777777' fontsize='9'>データ: {esc(os.path.basename(path))}（{len(body):,} 行）。上の絞り込みは、この表の全部のグラフに効きます。</run>
+              <run bold='true' fontcolor='#333333' fontsize='15'>{esc(dash)}&#10;</run>
+              <run fontcolor='#777777' fontsize='9'>データ: {esc(os.path.basename(path))}（{len(body):,} 行）。右上の絞り込みは、この表の全部のグラフに効きます。</run>
             </formatted-text>
 {ZSTYLE.replace("value='4'", "value='3'")}
           </zone>""")
-    y = 6667
-    if fdims:
-        w = 99000 // len(fdims)
+    if fdims:   # 右上に2列×2段
+        fw, fh = 21750, 5333
         for i, c in enumerate(fdims):
             zid += 1
-            z.append(zone(zid, 500 + i * w, y, w, 5333,
-                          f"mode='checkdropdown' name='{esc(ws_names[0])}' pane-specification-id='0' "
+            z.append(zone(zid, 56000 + (i % 2) * fw, 333 + (i // 2) * fh, fw, fh,
+                          f"mode='checkdropdown' name='{esc((ws_names or kpi_names)[0])}' pane-specification-id='0' "
                           f"param='[federated.{key}].[none:{esc(c['name'])}:nk]' type-v2='filter'"))
-        y += 5667
-    top_h = 41000 if (bars or cross) else 0
+    y = 11333
+    kh = 9000
+    kw = 99000 // len(kpi_names)
+    for i, n in enumerate(kpi_names):
+        zid += 1
+        z.append(zone(zid, 500 + i * kw, y, kw, kh, f"name='{esc(n)}' show-title='true'"))
+    y += kh + 333
     if bars:
+        bh = 36000
         w = 99000 // len(bars)
         for i, n in enumerate(ws_names[:len(bars)]):
             zid += 1
-            z.append(zone(zid, 500 + i * w, y, w, top_h, f"name='{esc(n)}' show-title='true'"))
-    y2 = y + top_h + 333
-    h2 = 97500 - y2
+            z.append(zone(zid, 500 + i * w, y, w, bh, f"name='{esc(n)}' show-title='true'"))
+        y += bh + 333
+    h2 = 97500 - y
     if cross:
         zid += 1
-        z.append(zone(zid, 500, y2, 49250, h2, f"name='{esc(cross)}' show-title='true'"))
+        z.append(zone(zid, 500, y, 44000, h2, f"name='{esc(cross)}' show-title='true'"))
         zid += 1
-        z.append(zone(zid, 50250, y2, 49250, h2, f"name='{esc(detail)}' show-title='true'"))
+        z.append(zone(zid, 45000, y, 54500, h2, f"name='{esc(detail)}' show-title='true'"))
     else:
         zid += 1
-        z.append(zone(zid, 500, y2, 99000, h2, f"name='{esc(detail)}' show-title='true'"))
+        z.append(zone(zid, 500, y, 99000, h2, f"name='{esc(detail)}' show-title='true'"))
+    ws_names = kpi_names + ws_names
     z.append(f"""          <zone forceUpdate='true' h='2000' id='{zid + 1}' type-v2='text' w='99000' x='500' y='97833'>
             <formatted-text>
               <run fontcolor='#999999' fontsize='8'>※ 1つの表＝1つのデータソース。別の表を同じ列に縦に積んでいません。数値の集計（{esc(m_label)}）は Tableau の集計です。</run>
@@ -431,7 +459,7 @@ def build_table(idx, path, title, a, groups_start):
       <viewpoints>
 {vps}
       </viewpoints>
-      <active id='{100 * idx + 1}' />
+      <active id='{100 * idx}' />
       <simple-id uuid='{{{uid("dash", dash)}}}' />
     </window>"""
 
@@ -441,9 +469,9 @@ def build_table(idx, path, title, a, groups_start):
     wr.writerows(body)
     info = {'path': path, 'rows': len(body), 'csv_name': csv_name, 'csv_text': out_csv.getvalue(), 'notes': notes,
             'bars': bars, 'cross': cross, 'measure': m_label, 'texts': texts, 'dims': dims, 'measures': measures,
-            'n_groups': len(fdims), 'cols': cols, 'dash': dash}
+            'n_groups': len(fdims), 'cols': cols, 'dash': dash, 'kpis': [label(c) for c in kpis[:4]]}
     obj_id = f'{key}_{uid("obj", csv_name).replace("-", "")}'
-    return (ds_xml(key, caption, csv_name, cols, obj_id, m.get('calc')), sheets, dash_xml,
+    return (ds_xml(key, caption, csv_name, cols, obj_id, True), sheets, dash_xml,
             [window_ws(n) for n in ws_names], dash_win, info)
 
 
@@ -472,8 +500,10 @@ def main():
     ap.add_argument('--measure', help='主に見る数値の列（既定=最初の数値の列。無ければ行の数）')
     ap.add_argument('--measures', default='', help='数値として集計する列を明示する（カンマ区切り）')
     ap.add_argument('--max-charts', type=int, default=3, help='棒グラフの最大枚数（1表あたり）')
+    ap.add_argument('--kpis', default='', help='大きな数字に出す数値の列（カンマ区切り。既定=主に見る数値・行の数・平均の列）')
     a = ap.parse_args()
     a.dims = [s.strip() for s in a.dims.split(',') if s.strip()]
+    a.kpis = [s.strip() for s in a.kpis.split(',') if s.strip()]
     a.measures = [s.strip() for s in a.measures.split(',') if s.strip()]
 
     dss, sheets, dashes, wins, dwins, infos = [], [], [], [], [], []
@@ -533,6 +563,7 @@ def main():
         print(f'  表: {os.path.basename(info["path"])}（{info["rows"]:,} 行）→ ダッシュボード「{info["dash"]}」')
         print(f'    項目の列: {", ".join(c["name"] for c in info["dims"]) or "なし"}')
         print(f'    数値の列: {", ".join(c["name"] + ("（平均）" if c["agg"] == "avg" else "") for c in info["measures"]) or "なし（行の数を数える）"}')
+        print(f'    大きな数字: {", ".join(info["kpis"])}（ほかの数値の合計を出すなら --kpis）')
         print(f'    棒グラフ: {", ".join(c["name"] for c in info["bars"]) or "なし"}／主に見る数値: {info["measure"]}')
         for n in info['notes']:
             print(f'    注意: {n}')

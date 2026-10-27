@@ -61,14 +61,20 @@ python .claude/skills/table-to-tableau/build_twbx.py a.csv b.csv -o out/2表.twb
 
 | シート | 中身 |
 |---|---|
+| `{数値}`（大きな数字） | 主に見る数値・行の数・平均で見る数値（率など）。ほかの数値の合計は `--kpis` で明示したときだけ |
 | `{項目}別 {数値}` | 横棒・大きい順（値の種類が2〜30の項目から最大3枚。`--max-charts`） |
-| `{項目} × {項目}　{数値}` | クロス表（色＋数値）。棒の項目が2つ以上あるとき |
+| `{項目} × {項目}　{数値}` | クロス表（1色相の濃淡＋数値）。棒の項目が2つ以上あるとき |
 | `明細（{数値}）` | 項目を並べた表 |
 | ダッシュボード | 上の全部＋絞り込み（最大4つ。**同じ表の全シートに効く**） |
 
+ダッシュボードは `CLAUDE.md` の「配置の原則」どおりに並べる。
+1段目 タイトル（左）＋絞り込み（右上）→ 2段目 大きな数字 → 3段目 概要（棒）→ 4段目 詳細（クロス表・明細）。
+
 ## XML の出どころ（推測で書いたものは無い）
 - データソース・棒・クロス表・明細・ダッシュボード・window: `freetext-to-tableau/template/freetext_dashboard.twb`（Desktop 2026.1 で表示確認済み）と同じ形
-- 全シートに効く絞り込み: `<filter … filter-group='N'>` ＋ `level-members`（Tableau が保存した TWB に 96 件ある形）
+- 全シートに効く絞り込み: `<filter … filter-group='N'>` ＋ `level-members`（Tableau が保存した TWB に 96 件ある形。Desktop 2026.1 で全シート連動を確認済み）
+- 大きな数字: Text マーク＋ pane の `style-rule element='mark'` に `font-size`（Tier A 42件）。空の棚は `<rows />` `<cols />`
+- 1色相の濃淡: `style-rule element='mark'` 内の `<encoding attr='color' … palette='blue_10_0' type='interpolated' />`（Tier A 40件）
 - 最後に `twb-public-export` と同じ Desktop 互換変換と内容モデル検査を通す
 - 足したい表現があれば、先に `twb-xml-syntax-miner` で手本を引く（`CLAUDE.md` の「必ず守ること」4）
 

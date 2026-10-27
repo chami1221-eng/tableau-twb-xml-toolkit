@@ -530,16 +530,16 @@
           <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
             <groupfilter function='member' level='[none:表:nk]' member='&quot;ワードクラウド&quot;' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
             <groupfilter function='level-members' level='[none:データの種類:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
             <groupfilter function='level-members' level='[none:分野:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
             <groupfilter function='level-members' level='[none:年月:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
             <groupfilter function='level-members' level='[none:地域:nk]' />
           </filter>
           <filter class='categorical' column='[federated.ds_d2].[none:品詞:nk]'>
@@ -653,16 +653,16 @@
           <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
             <groupfilter function='member' level='[none:表:nk]' member='&quot;ワードクラウド&quot;' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
             <groupfilter function='level-members' level='[none:データの種類:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
             <groupfilter function='level-members' level='[none:分野:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
             <groupfilter function='level-members' level='[none:地域:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
             <groupfilter function='level-members' level='[none:年月:nk]' />
           </filter>
           <filter class='categorical' column='[federated.ds_d2].[none:品詞:nk]'>
@@ -739,16 +739,16 @@
           <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
             <groupfilter function='member' level='[none:表:nk]' member='&quot;共起ネットワーク&quot;' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
             <groupfilter function='level-members' level='[none:データの種類:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
             <groupfilter function='level-members' level='[none:分野:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
             <groupfilter function='level-members' level='[none:地域:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
             <groupfilter function='level-members' level='[none:年月:nk]' />
           </filter>
           <slices>
@@ -890,16 +890,16 @@
           <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
             <groupfilter function='member' level='[none:表:nk]' member='&quot;会話ログ&quot;' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
             <groupfilter function='level-members' level='[none:データの種類:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
             <groupfilter function='level-members' level='[none:分野:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
             <groupfilter function='level-members' level='[none:地域:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
             <groupfilter function='level-members' level='[none:年月:nk]' />
           </filter>
           <filter class='categorical' column='[federated.ds_d2].[none:キーワード:nk]'>
@@ -975,16 +975,16 @@
           <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
             <groupfilter function='member' level='[none:表:nk]' member='&quot;会話集計&quot;' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
             <groupfilter function='level-members' level='[none:データの種類:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
             <groupfilter function='level-members' level='[none:分野:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
             <groupfilter function='level-members' level='[none:地域:nk]' />
           </filter>
-          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]'>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
             <groupfilter function='level-members' level='[none:年月:nk]' />
           </filter>
           <slices>
@@ -998,6 +998,9 @@
         <style>
           <style-rule element='header'>
             <format attr='width' field='[federated.ds_d2].[none:テーマ:nk]' value='110' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.ds_d2].[usr:ネガティブ率:qk]' palette='blue_10_0' type='interpolated' />
           </style-rule>
         </style>
         <panes>
@@ -1022,6 +1025,152 @@
         <cols>[federated.ds_d2].[none:地域:nk]</cols>
       </table>
       <simple-id uuid='{2F51750A-6A19-4996-8FD3-7CE5DBFB3E94}' />
+    </worksheet>
+    <worksheet name='意見の件数'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='テーマ' datatype='string' name='[テーマ]' role='dimension' type='nominal' />
+            <column-instance column='[テーマ]' derivation='None' name='[none:テーマ:nk]' pivot='key' type='nominal' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+            <column caption='件数' datatype='integer' name='[件数]' role='measure' type='quantitative' />
+            <column-instance column='[件数]' derivation='Sum' name='[sum:件数:qk]' pivot='key' type='quantitative' />
+            <column caption='ネガティブ件数' datatype='integer' name='[ネガティブ件数]' role='measure' type='quantitative' />
+            <column-instance column='[ネガティブ件数]' derivation='Sum' name='[sum:ネガティブ件数:qk]' pivot='key' type='quantitative' />
+            <column caption='ネガティブ率' datatype='real' default-format='n#,##0.0' name='[ネガティブ率]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([ネガティブ件数]) / SUM([件数]) * 100' />
+            </column>
+            <column-instance column='[ネガティブ率]' derivation='User' name='[usr:ネガティブ率:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;会話集計&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.ds_d2].[sum:件数:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='font-size' value='20' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6C1E2A40-7B55-4D3E-9F10-2A61C3D4E5F1}' />
+    </worksheet>
+    <worksheet name='ネガティブな意見の割合（％）'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='自由記述（テキスト分析）' name='federated.ds_d2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.ds_d2'>
+            <column caption='表' datatype='string' name='[表]' role='dimension' type='nominal' />
+            <column-instance column='[表]' derivation='None' name='[none:表:nk]' pivot='key' type='nominal' />
+            <column caption='データの種類' datatype='string' name='[データの種類]' role='dimension' type='nominal' />
+            <column-instance column='[データの種類]' derivation='None' name='[none:データの種類:nk]' pivot='key' type='nominal' />
+            <column caption='分野' datatype='string' name='[分野]' role='dimension' type='nominal' />
+            <column-instance column='[分野]' derivation='None' name='[none:分野:nk]' pivot='key' type='nominal' />
+            <column caption='年月' datatype='string' name='[年月]' role='dimension' type='nominal' />
+            <column-instance column='[年月]' derivation='None' name='[none:年月:nk]' pivot='key' type='nominal' />
+            <column caption='テーマ' datatype='string' name='[テーマ]' role='dimension' type='nominal' />
+            <column-instance column='[テーマ]' derivation='None' name='[none:テーマ:nk]' pivot='key' type='nominal' />
+            <column caption='地域' datatype='string' name='[地域]' role='dimension' type='nominal' />
+            <column-instance column='[地域]' derivation='None' name='[none:地域:nk]' pivot='key' type='nominal' />
+            <column caption='件数' datatype='integer' name='[件数]' role='measure' type='quantitative' />
+            <column-instance column='[件数]' derivation='Sum' name='[sum:件数:qk]' pivot='key' type='quantitative' />
+            <column caption='ネガティブ件数' datatype='integer' name='[ネガティブ件数]' role='measure' type='quantitative' />
+            <column-instance column='[ネガティブ件数]' derivation='Sum' name='[sum:ネガティブ件数:qk]' pivot='key' type='quantitative' />
+            <column caption='ネガティブ率' datatype='real' default-format='n#,##0.0' name='[ネガティブ率]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([ネガティブ件数]) / SUM([件数]) * 100' />
+            </column>
+            <column-instance column='[ネガティブ率]' derivation='User' name='[usr:ネガティブ率:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.ds_d2].[none:表:nk]'>
+            <groupfilter function='member' level='[none:表:nk]' member='&quot;会話集計&quot;' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:データの種類:nk]' filter-group='1'>
+            <groupfilter function='level-members' level='[none:データの種類:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:分野:nk]' filter-group='2'>
+            <groupfilter function='level-members' level='[none:分野:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:地域:nk]' filter-group='3'>
+            <groupfilter function='level-members' level='[none:地域:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.ds_d2].[none:年月:nk]' filter-group='4'>
+            <groupfilter function='level-members' level='[none:年月:nk]' />
+          </filter>
+          <slices>
+            <column>[federated.ds_d2].[none:データの種類:nk]</column>
+            <column>[federated.ds_d2].[none:分野:nk]</column>
+            <column>[federated.ds_d2].[none:地域:nk]</column>
+            <column>[federated.ds_d2].[none:年月:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.ds_d2].[usr:ネガティブ率:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='font-size' value='20' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6C1E2A40-7B55-4D3E-9F10-2A61C3D4E5F2}' />
     </worksheet>
   </worksheets>
   <dashboards>
@@ -1106,7 +1255,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='15833' id='21' name='単語ランキング（件数）' show-title='true' w='40000' x='500' y='16667'>
+          <zone h='8333' id='41' name='意見の件数' show-title='true' w='49250' x='500' y='16667'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -1114,7 +1263,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='16000' id='22' name='ワードクラウド（大きさ＝件数・色＝感情）' show-title='true' w='40000' x='500' y='32667'>
+          <zone h='8333' id='42' name='ネガティブな意見の割合（％）' show-title='true' w='49250' x='50250' y='16667'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -1122,7 +1271,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='32000' id='23' name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）' show-title='true' w='58500' x='41000' y='16667'>
+          <zone h='16333' id='21' name='単語ランキング（件数）' show-title='true' w='40000' x='500' y='25333'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -1130,7 +1279,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='26667' id='25' name='地域 × テーマ　ネガティブな意見の割合（％）' show-title='true' w='99000' x='500' y='49000'>
+          <zone h='11000' id='22' name='ワードクラウド（大きさ＝件数・色＝感情）' show-title='true' w='40000' x='500' y='42000'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -1138,7 +1287,23 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='21667' id='24' name='意見の原文（語をクリックすると絞り込み・デモ用に400件を抽出）' show-title='true' w='99000' x='500' y='76000'>
+          <zone h='27667' id='23' name='リレーションマップ（丸＝件数・線＝同じ意見に出る語）' show-title='true' w='58500' x='41000' y='25333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='22667' id='25' name='地域 × テーマ　ネガティブな意見の割合（％）' show-title='true' w='99000' x='500' y='53333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='21333' id='24' name='意見の原文（語をクリックすると絞り込み・デモ用に400件を抽出）' show-title='true' w='99000' x='500' y='76333'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -1284,6 +1449,52 @@
       </cards>
       <simple-id uuid='{6647335B-FB85-4B21-ACB5-3D225AFABBED}' />
     </window>
+    <window class='worksheet' name='意見の件数'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6C1E2A40-7B55-4D3E-9F10-2A61C3D4E6A1}' />
+    </window>
+    <window class='worksheet' name='ネガティブな意見の割合（％）'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6C1E2A40-7B55-4D3E-9F10-2A61C3D4E6A2}' />
+    </window>
     <window class='dashboard' maximized='true' name='自由記述を、言葉から読む'>
       <viewpoints>
         <viewpoint name='単語ランキング（件数）'>
@@ -1299,6 +1510,12 @@
           <zoom type='fit-width' />
         </viewpoint>
         <viewpoint name='地域 × テーマ　ネガティブな意見の割合（％）'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='意見の件数'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='ネガティブな意見の割合（％）'>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
