@@ -471,7 +471,7 @@
       <source dashboard='自由記述を、言葉から読む' type='sheet' worksheet='単語ランキング（件数）' />
       <link caption='棒をクリック → その語の原文を見る' delimiter=',' escape='\' expression='tsl:%E8%87%AA%E7%94%B1%E8%A8%98%E8%BF%B0%E3%82%92%E3%80%81%E8%A8%80%E8%91%89%E3%81%8B%E3%82%89%E8%AA%AD%E3%82%80?%5Bfederated.ds_d2%5D.%5B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89%5D~s0=&lt;[federated.ds_d2].[キーワード]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
       <command command='tsc:tsl-filter'>
-        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）' />
+        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）,意見の件数,ネガティブな意見の割合（％）' />
         <param name='target' value='自由記述を、言葉から読む' />
       </command>
     </action>
@@ -480,7 +480,7 @@
       <source dashboard='自由記述を、言葉から読む' type='sheet' worksheet='ワードクラウド（大きさ＝件数・色＝感情）' />
       <link caption='語をクリック → その語の原文を見る' delimiter=',' escape='\' expression='tsl:%E8%87%AA%E7%94%B1%E8%A8%98%E8%BF%B0%E3%82%92%E3%80%81%E8%A8%80%E8%91%89%E3%81%8B%E3%82%89%E8%AA%AD%E3%82%80?%5Bfederated.ds_d2%5D.%5B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89%5D~s0=&lt;[federated.ds_d2].[キーワード]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
       <command command='tsc:tsl-filter'>
-        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）' />
+        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）,意見の件数,ネガティブな意見の割合（％）' />
         <param name='target' value='自由記述を、言葉から読む' />
       </command>
     </action>
@@ -489,7 +489,7 @@
       <source dashboard='自由記述を、言葉から読む' type='sheet' worksheet='リレーションマップ（丸＝件数・線＝同じ意見に出る語）' />
       <link caption='丸をクリック → その語の原文を見る' delimiter=',' escape='\' expression='tsl:%E8%87%AA%E7%94%B1%E8%A8%98%E8%BF%B0%E3%82%92%E3%80%81%E8%A8%80%E8%91%89%E3%81%8B%E3%82%89%E8%AA%AD%E3%82%80?%5Bfederated.ds_d2%5D.%5B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89%5D~s0=&lt;[federated.ds_d2].[キーワード]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
       <command command='tsc:tsl-filter'>
-        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）' />
+        <param name='exclude' value='単語ランキング（件数）,ワードクラウド（大きさ＝件数・色＝感情）,リレーションマップ（丸＝件数・線＝同じ意見に出る語）,地域 × テーマ　ネガティブな意見の割合（％）,意見の件数,ネガティブな意見の割合（％）' />
         <param name='target' value='自由記述を、言葉から読む' />
       </command>
     </action>

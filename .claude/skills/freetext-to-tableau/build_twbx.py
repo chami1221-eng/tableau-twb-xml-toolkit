@@ -18,6 +18,7 @@ import re
 import sys
 import zipfile
 from collections import Counter
+from urllib.parse import quote, unquote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, 'template', 'freetext_dashboard.twb')
@@ -58,6 +59,10 @@ def layout_warnings(rows, words):
 
 def esc(s):
     return s.replace('&', '&amp;').replace("'", '&apos;').replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
+
+
+def unesc(s):
+    return s.replace('&lt;', '<').replace('&gt;', '>').replace('&quot;', '"').replace('&apos;', "'").replace('&amp;', '&')
 
 
 def main():
@@ -107,7 +112,14 @@ def main():
         print('  注意: 分野の色の定義が見つからない（既定色になる）')
 
     if a.title:
+        # クリック連動（action）の宛先は link expression に URL エンコードで入っている。
+        # 平文だけ置き換えると宛先のダッシュボードが無くなり、語・棒・丸を押しても絞り込まれない（★261028 発覚）
+        twb = twb.replace(quote(TITLE, safe=''), quote(a.title, safe=''))
         twb = twb.replace(TITLE, esc(a.title))
+    dashes = re.findall(r"<dashboard [^>]*name='([^']+)'", twb)
+    lost = [unquote(t) for t in re.findall(r"expression='tsl:([^?']+)\?", twb) if unquote(t) not in [unesc(d) for d in dashes]]
+    if lost:
+        raise SystemExit(f'★クリック連動の宛先のダッシュボードが無い: {sorted(set(lost))}（ダッシュボード: {dashes}）')
 
     # 3. Desktop / Public Desktop 2026.1 で開ける形に（★261007 Cowork 試走で D2E8DA72＝空の ManifestByVersion で止まった）
     #    twb-public-export と同じ処理（接続パス・並べ替えの位置・互換変換・内容モデル検査）をここで通す
